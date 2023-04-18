@@ -13,10 +13,8 @@ const bcrypt = require("bcrypt");
 const saltRounds = 8;
 const router = express.Router();
 
-const { PropertiesHR } = require("../models/propertyModel");
-const { RegisteredUsersHR } = require("../models/registerModel");
-const { UsersHR } = require("../models/userModel");
-const { UsersTrackerHR } = require("../models/userTrackerModel");
+
+
 
 async function addNewUser(req, res) {
   try {

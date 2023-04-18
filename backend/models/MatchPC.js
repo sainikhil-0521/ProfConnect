@@ -14,14 +14,12 @@ const router=express.Router()
     const MatchPCSchema = {
        
         profile1:{
-            type:mongoose.Schema.Types.ObjectId,
-            ref: "UserPC" ,
-            unique:true
+            type:String,
+            require:true
         },
         profile2:{
-            type:mongoose.Schema.Types.ObjectId,
-            ref: "UserPC" ,
-            unique:true
+            type:String,
+            require:true
         },
         note1:{
             type:[{timestamp:Date,data:String}],
@@ -33,8 +31,16 @@ const router=express.Router()
         },
         chatId:{
             type:mongoose.Schema.Types.ObjectId,
-            ref: "ChatPC" ,
+            ref: "chatduplicatepc" ,
             unique:true
+        },
+        unseen1:{
+            type:Number,
+            default:0
+        },
+        unseen2:{
+            type:Number,
+            default:0
         },
         createdOn:{
             type:Date,
@@ -46,7 +52,7 @@ const router=express.Router()
   
      
       const MatchPC = mongoose.model(
-        "MatchPC",
+        "matchduplicatepc",
         MatchPCSchema
       ); //models defined
 

@@ -1,55 +1,151 @@
-$(".messages").animate({ scrollTop: $(document).height() }, "fast");
 
-$("#profile-img").click(function() {
-	$("#status-options").toggleClass("active");
+
+var socket = io("http://localhost:4050",{query:`uname=${localStorage.username}`});
+$(document).ready(function () {
+  $("#action_menu_btn").click(function () {
+    $(".action_menu").toggle();
+
+  });
+  
 });
 
-$(".expand-button").click(function() {
-  $("#profile").toggleClass("expanded");
-	$("#contacts").toggleClass("expanded");
-});
+socket.on("initial_connection",(msg)=>{
+  console.log(msg);
 
-$("#status-options ul li").click(function() {
-	$("#profile-img").removeClass();
-	$("#status-online").removeClass("active");
-	$("#status-away").removeClass("active");
-	$("#status-busy").removeClass("active");
-	$("#status-offline").removeClass("active");
-	$(this).addClass("active");
-	
-	if($("#status-online").hasClass("active")) {
-		$("#profile-img").addClass("online");
-	} else if ($("#status-away").hasClass("active")) {
-		$("#profile-img").addClass("away");
-	} else if ($("#status-busy").hasClass("active")) {
-		$("#profile-img").addClass("busy");
-	} else if ($("#status-offline").hasClass("active")) {
-		$("#profile-img").addClass("offline");
-	} else {
-		$("#profile-img").removeClass();
-	};
-	
-	$("#status-options").removeClass("active");
-});
+  msg.forEach(element => {
+    document.querySelector(".contacts").innerHTML+=`
+      <li class="" id=${element.username}>
+        <div class="d-flex bd-highlight">
+          <div class="img_cont">
+            <img src=${element.image} class="rounded-circle user_img">
+            <span class="online_icon"></span>
+          </div>
+          <div class="user_info">
+            <span>${element.username}</span>
+            <span class="new_msg">${element.count?element.count:""}</span>
+          </div>
+        </div>
+      </li>`;
 
-function newMessage() {
-	message = $(".message-input input").val();
-	if($.trim(message) == '') {
-		return false;
-	}
-	$('<li class="sent"><img src="http://emilcarlsson.se/assets/mikeross.png" alt="" /><p>' + message + '</p></li>').appendTo($('.messages ul'));
-	$('.message-input input').val(null);
-	$('.contact.active .preview').html('<span>You: </span>' + message);
-	$(".messages").animate({ scrollTop: $(document).height() }, "fast");
-};
+      document.querySelector(".chatting").innerHTML+=`<div class="card cardd" id=${element.username+"div"}>
+						<div class="card-header msg_head">
+							<div class="d-flex bd-highlight">
+								<div class="img_cont">
+									<img src=${element.image} class="rounded-circle user_img">
+									<span class="online_icon"></span>
+								</div>
+								<div class="user_info">
+									<span>${element.username}</span>
+									
+								</div>
+								<div class="video_cam">
+									<span><i class="fas fa-video"></i></span>
+									<span><i class="fas fa-phone"></i></span>
+								</div>
+							</div>
+							<span id="action_menu_btn"><i class="fas fa-ellipsis-v"></i></span>
+							<div class="action_menu">
+								<ul>
+									<li><i class="fas fa-user-circle"></i> View profile</li>
+									<li><i class="fas fa-users"></i> Add to close friends</li>
+									<li><i class="fas fa-plus"></i> Add to group</li>
+									<li><i class="fas fa-ban"></i> Block</li>
+								</ul>
+							</div>
+						</div>
+            <div class="card-body msg_card_body"></div></div>`;
+            element.messages.forEach(ele => {
+              let elemsg=ele.split("~~")
+              let datee=new Date(Number(elemsg[1]))
+              console.log(elemsg);
+              document.querySelector("#"+element.username+"div .msg_card_body").innerHTML+=`
+                
+                <div class="d-flex justify-content-${elemsg[0]==localStorage.username?"end":"start"} mb-4">
+                  
+                  <div class="msg_cotainer${(elemsg[0]==localStorage.username)?"_send":""}">
+                    ${elemsg[2]}
+                    <span class="msg_time">${datee.getUTCDate()+"-"+datee.getUTCMonth()+"-"+datee.getUTCFullYear()}</span>
+                  </div>
+                </div>`
+            })
+            document.querySelector("#"+element.username+"div").innerHTML+=`<div class="card-footer">
+							<div class="input-group">
+								<div class="input-group-append">
+									<span class="input-group-text attach_btn"><i class="fas fa-paperclip"></i></span>
+								</div>
+								<textarea name="" class="form-control type_msg" placeholder="Type your message..."></textarea>
+								<div class="input-group-append">
+									<span class="input-group-text send_btn"><i class="fas fa-location-arrow"></i></span>
+								</div>
+							</div>
+					</div>`
+  });
+  
 
-$('.submit').click(function() {
-  newMessage();
-});
+  $(".contacts li").click((e)=>{
+    if(prev) prev.classList.toggle("active")
+    e.target.classList.toggle("active")
+    e.target.querySelector(".new_msg").innerText=''
+  
+    
+    $("#"+prevdiv.id).toggleClass("cardd");
+    $("#"+e.target.id+"div").toggleClass("cardd");
+    console.log($("#"+e.target.id+"div")[0]);
+    prevdiv=document.querySelector("#"+e.target.id+"div")
+    prev=e.target
+    socket.emit('chat message2',localStorage.username,e.target.id)
+  })
 
-$(window).on('keydown', function(e) {
-  if (e.which == 13) {
-    newMessage();
-    return false;
+  $(".fa-location-arrow").click((e)=>{
+    if($(".type_msg").val() !== ""){
+      socket.emit('chat message',$(".type_msg").val(),localStorage.username,$(".active")[0].id)
+      document.querySelector("#"+$(".active")[0].id+"div .msg_card_body").innerHTML+=`
+                
+                <div class="d-flex justify-content-end mb-4">
+                  
+                  <div class="msg_cotainer_send">
+                    ${$(".type_msg").val()}
+                    <span class="msg_time">${new Date()}</span>
+                  </div>
+                </div>`
+      $(".type_msg").val("")
+    }
+  })
+
+})
+
+
+socket.on("chat message",(msg,msgcount)=>{
+  console.log(msg);
+  let elemsg=msg.split("~~")
+  console.log(elemsg);
+  document.querySelector("#"+elemsg[0]+"div .msg_card_body").innerHTML+=`
+                
+                <div class="d-flex justify-content-start mb-4">
+                  
+                  <div class="msg_cotainer">
+                    ${elemsg[2]}
+                    <span class="msg_time">${elemsg[1]}</span>
+                  </div>
+                </div>`;
+
+  if(!$("#"+elemsg[0]).hasClass("active")){
+    document.querySelector("#"+elemsg[0]+" div .user_info .new_msg").innerText=msgcount
   }
-});
+  else{
+    socket.emit('chat message2',localStorage.username,elemsg[0])
+  }
+  
+})
+
+
+
+
+
+
+
+let prev;
+let prevdiv=document.querySelector("#card-introdiv")
+
+
+

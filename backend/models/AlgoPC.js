@@ -15,7 +15,7 @@ const router=express.Router()
        
         userId:{
             type:mongoose.Schema.Types.ObjectId,
-            ref: "UserPC" ,
+            ref: "userduplicatepc" ,
             unique:true
         },
         scoreField:{
@@ -38,7 +38,7 @@ const router=express.Router()
      
 
       const AlgoPC = mongoose.model(
-        "AlgoPC",
+        "algoduplicatepc",
         AlgoPCSchema
       ); //models defined
 

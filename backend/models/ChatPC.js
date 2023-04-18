@@ -16,7 +16,7 @@ const router=express.Router()
         chat:{
             type:[{type:String}],
             default:[],
-            minlength:5,
+            
         },
 
         
@@ -27,7 +27,7 @@ const router=express.Router()
      
 
       const ChatPC = mongoose.model(
-        "ChatPC",
+        "chatduplicatepc",
         ChatPCSchema
       ); //models defined
 

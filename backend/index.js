@@ -13,7 +13,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-//database connection
+
 
 mongoose
   .connect(
@@ -22,19 +22,15 @@ mongoose
   .then(() => {
     
     console.log("DB Connection sucessful");
-    app.use("/users",require("./routes/user.js"));
+    
+  })
+  
+  app.get("/",(req,res)=>{
+    console.log("server working");
+    res.send("coolDude")
+  })
 
 
-
-
-
-
-  });
-
-app.get("/",(req,res)=>{
-  console.log("server connected...");
-  res.send("okCool")
-})
 app.listen(process.env.PORT || 4000, () => {
   console.log("server running in 4000");
 });
