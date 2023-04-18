@@ -12,22 +12,27 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const router=express.Router()
     
     const UserPCSchema = {
+      googleid:{
+        type:String,
+        
+      },
         username: { 
           type: String,
+          unique:true,
            required: true ,
           minlength: 4,
           maxlength: 30},
         email: { 
           type: String,
            required: true, 
-           unique: true ,
-          match:/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+          unique: true ,
+         // match:/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
         },
         password: { 
           type: String, 
-          required: true, 
-          unique: true,
-          match:   /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/ 
+         // required: true, 
+        //   unique: true,
+        //   match:   /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/ 
         },
         profilePic:{
           type:String,
@@ -36,16 +41,16 @@ const router=express.Router()
         gender:{
             type:String,
             enum:['male','female'],
-            require:true
+          //  require:true
         },
         dateOfBirth:{
             type:Date,
-            require:true
+           // require:true
 
         },
         country:{
             type:String,
-            require:true
+           // require:true
         },
         yearsOfExperience:{
             type:Number,
@@ -54,47 +59,50 @@ const router=express.Router()
         userType:{
             type:String,
             enum:['free','silver','gold','admin'],
-            require:true,
+          //  require:true,
             default:'free'
         },
         matchedProfiles:{type:[{
                 type: mongoose.Schema.Types.ObjectId,
                 ref: "UserPCSchema" ,
-                unique:true
+               // unique:true
             }
         ],
-        default:[]
+        default:[],
         },
         blockedProfiles:{type:[{
                 type: mongoose.Schema.Types.ObjectId,
                 ref: "UserPCSchema" ,
-                unique:true
+               // unique:true
             }
         ],
         default:[]
         },
         courseType:{
             type:String,
-            require:true,
-            enum:['BTech','Integrated-MTech','MTech','BCA','BArch','BSc']
+           // require:true,
+            enum:['BTech','Integrated-MTech','MTech','BCA','BArch','BSc'],
+            
         },
         company:{
             type:String,
-            require:true,
-            default:null
+           // require:true,
+            //default:null
         },
         companyType:{
             type:String,
-            default:null
+            enum:['Service-based','Product-based'],
+            default:'Service-based'
         },
         role:{
             type:String,
-            default:null
+            enum:['level0','level1','level2','level3','level4','level5'],
+            default:'level0'
         },
         domain:{
             type:String,
             enum:['saas','paas','iaas'],
-            default:null
+            default:'saas'
         },
         createdOn:{
             type:Date,
