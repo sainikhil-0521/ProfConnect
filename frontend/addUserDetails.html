@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<!--=== Coding by CodingLab | www.codinglabweb.com === -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!----======== CSS ======== -->
+    <link rel="stylesheet" href="./assets/css/addUserDetails.css">
+     
+    <!----===== Iconscout CSS ===== -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
+    <!--<title>Responsive Regisration Form </title>--> 
+    <style>
+        .eimg{
+            margin-left: 4%;
+
+        }
+        .eimg:hover{
+            cursor: pointer;
+        }
+        .cancel img{
+            margin-left: 98%;
+            width: 4%;
+            height: 4%;
+            cursor: pointer;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="cancel"><img src="./assets/images/cancel.png" alt=""></div>
+        <header>User Details <img src="./assets/images/edit-button.png" class="eimg" alt="" srcset="" width="2.5%" height="4%"></header>
+        
+        <form id="myform" name="myform" action="http://127.0.0.1:4000/users/addUserDetails" enctype="multipart/form-data" method="post">
+            <div class="form first">
+                <div class="details personal"> <br>
+                    <span class="title">Personal Details</span> <br>
+
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>User Name</label>
+                            <input type="text" name="username" id="username" class="name" placeholder="Enter your name" >
+                        </div>
+
+                        <div class="input-field">
+                            <label>Email</label>
+                            <input type="text" name="email" id="email" class="pname" placeholder="Enter name" >
+                        </div>
+
+                      
+
+                        <div class="input-field">
+                            <label>Gender</label>
+                            <select id="gender" name="gender">
+                                <option disabled selected>Select Gender</option>
+                                <option class="male">Male</option>
+                                <option class="female">Female</option>
+                                <option class="others">Others</option>
+                            </select>
+                        </div>
+                        
+                        
+                        <div class="input-field">
+                            <label>Date-Of-Birth</label>
+                            <input name="dob" type="date" id="dob" class="dob" placeholder="enter dob" >
+                        </div>
+                        <div class="input-field">
+                            <label>Country</label>
+                            <input name="country" type="text" id="country" class="country" placeholder="enter your country" >
+                        </div>
+                        <div class="input-field">
+                            <label>CourseType</label>
+                            <select id="coursetype" name="coursetype">
+                                <option disabled selected>Select UG</option>
+                                <option class="BTech">BTech</option>
+                                <option class="Integrated-MTech">Integrated-MTech</option>
+                                <option class="MTech">MTech</option>
+                                <option class="BCA">BCA</option>
+                                <option class="BArch">BArch</option>
+                                <option class="BSc">BSc</option>
+                            </select>
+                        </div>
+                        <div class="input-field">
+                            <label>Experience(in years)</label>
+                            <input name="experience" type="number" id="experience" class="experience" placeholder="enter your years of experience" >
+                        </div>
+                        <div class="input-field">
+                            <label>Company</label>
+                            <input name="company" type="text" id="company" class="company" placeholder="enter your company name" >
+                        </div>
+                        <div class="input-field">
+                            <label>Company Type</label>
+                            <select id="companytype" name="companytype">
+                                <option disabled selected>Select Company Type</option>
+                                <option class="Service-based">Service-based</option>
+                                <option class="Product-based">Product-based</option>
+                                <option class="others">Others</option>
+                            </select>
+                        </div>
+                        
+                    </div> <br>
+                    <button class="nextBtn">
+                        <span class="btnText">Next</span>
+                        <i class="uil uil-navigator"></i>
+                    </button>
+                </div>
+
+                
+            </div> 
+
+            <div class="form second">
+                <div class="details address"> <br>
+                    <!-- <span class="title">Address Details</span> -->
+
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>Role</label>
+                            <select id="role" name="role">
+                                <option disabled selected>Select Role(in level)</option>
+                                <option class="level0">Level0</option>
+                                <option class="level1">Level1</option>
+                                <option class="level2">Level2</option>
+                                <option class="level3">Level3</option>
+                                <option class="level4">Level4</option>
+                                <option class="level5">Level5</option>
+                            </select>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Domain</label>
+                            <select id="domain" name="domain">
+                                <option disabled selected>Select Domain</option>
+                                <option class="saas">saas</option>
+                                <option class="iaas">iaas</option>
+                                <option class="paas">paas</option>
+                            </select>
+                        </div>
+
+                        <div class="input-field"></div>
+                    </div>
+                </div> <br>
+
+                <div class="details family">
+                    <span class="title">Profile Pic</span>
+
+                    <div class="fields">
+                        <div class="input-field">
+                            <img class="pimg" src='https://houserentals-properties-upload.s3.ap-south-1.amazonaws.com/image-1681716739595.jpeg' alt="">
+                            <input type="hidden" name="image" value="" class="imagesrc">
+                        </div>
+                        <div class="input-field2">
+                            
+                                <input type="file"  name="myFile" id="imgg">
+                                <input type="hidden" id="key" name="key">
+                                <input type="hidden" id="uid" name="uid">
+                                <!-- <button type="button" name="submitImg" class="btn btn-light img">Upload</button> -->
+                        </div>
+                        
+                    </div> <br> 
+
+                    <div class="buttons">
+                        <div class="backBtn">
+                            <i class="uil uil-navigator"></i>
+                            <span class="btnText">Back</span>
+                        </div>
+                        
+                        <button type="submit" name="submit"  class="submit" >
+                            <span class="btnText">Submit</span>
+                            <i class="uil uil-navigator"></i>
+                        </button>
+                    </div>
+                </div> 
+            </div>
+        </form>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="./assets/js/addUserDetails.js"></script>
+</body>
+</html>
