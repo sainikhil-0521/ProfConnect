@@ -2063,7 +2063,8 @@ select {
   height: 50px;
 }
 .banner-section .section-wrapper .banner-content .intro-form .intro-form-inner .social-list .google .linkedin {
-  background-color: #3b5998;
+  /* background-color: #3b5998; */
+  background-color: white;
 }
 .banner-section .section-wrapper .banner-content .intro-form .intro-form-inner .social-list .google i {
   color: #fff;

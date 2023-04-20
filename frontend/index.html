@@ -108,7 +108,7 @@
                         </ul>
                         <a href="login.html" class="login" id="login">LOG IN</a>
                         <a href="signup.html" class="signup" id="signup">SIGN UP</a>
-                        <a href="" class="logout" id="logout"><i class="icofont-user"></i><span>LOGOUT</span> </a>
+                        <a href="" class="logout" id="logout"><i class="icofont-user"></i><span><b>LOGOUT</b></span> </a>
 
                         <!-- toggle icons -->
                         <div class="header-bar d-lg-none">
@@ -195,21 +195,25 @@
                                         <button class="">Find a Professional</button>
 
                                     </form>
-                                    <ul class="social-list">
+                                    <!-- <ul class="social-list">
                                         <li class="linkedin"><a href="#">
-                                            <i class="icofont-linkedin"></i>
-                                                <span>Continue with LinkedIn</span>
+                                            <img src="assets/images/banner/google.png" alt="img">
+                                                <span>Continue with Google</span>
                                             </a></li>
                                         <li class="google"><a href="
                                             #">
-                                                <!-- <i class="icofont-facebook"></i> -->
-                                                <img src="assets/images/banner/google.png" alt="img">
-                                            </a></li>
-                                        <!-- <li class="twitter"><a href="
+                                                
+                                                
+                                                <i class="icofont-linkedin"></i>
+                                                
+                                            </a></li> 
+                                        
+                                        
+                                        <li class="twitter"><a href="
                                             #">
                                                 <i class="icofont-twitter"></i>
-                                            </a></li> -->
-                                    </ul>
+                                            </a></li>
+                                    </ul> -->
                                 </div>
                             </div>
                         </div>
@@ -725,7 +729,7 @@
     <script src="assets/js/logoutHandler.js"></script>
     <script src="assets/js/functions.js"></script>
     <script>
-        var arr=window.location.href.split("?");
+        var arr= decodeURIComponent( window.location.href).split("?");
         if(arr.length==5){
             localStorage.setItem("name",arr[1]);
             localStorage.setItem("username",arr[3]);

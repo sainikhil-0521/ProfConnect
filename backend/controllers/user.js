@@ -94,7 +94,8 @@ async function addUserDetails(req, res) {
 
       );
       console.log(check);
-      res.send({ ok: "ok" });
+      // res.send({ ok: "ok" });
+      // window.open("../")
      } 
       else{
         res.send("object null")
@@ -162,5 +163,13 @@ async function valid(req,res){
 
 }
 
+async function profile(req,res){
 
-module.exports={signup,addUserDetails,valid}
+  var obj = await display(req.user.email);
+  if(obj){
+    res.send({obj:obj,user:"valid"});
+  }
+}
+
+
+module.exports={signup,addUserDetails,valid,profile}
