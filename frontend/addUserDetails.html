@@ -11,6 +11,7 @@
      
     <!----===== Iconscout CSS ===== -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    
 
     <!--<title>Responsive Regisration Form </title>--> 
     <style>
@@ -93,6 +94,10 @@
                             <input name="company" type="text" id="company" class="company" placeholder="enter your company name" >
                         </div>
                         <div class="input-field">
+                            <label>Interests</label>
+                            <input name="interests" type="text" id="interests" class="interests" placeholder="enter your interests" >
+                        </div>
+                        <div class="input-field">
                             <label>Company Type</label>
                             <select id="companytype" name="companytype">
                                 <option disabled selected>Select Company Type</option>
@@ -101,8 +106,20 @@
                                 <option class="others">Others</option>
                             </select>
                         </div>
+                        <div class="input-field">
+                            <label>Languages Known</label>
+                            <select id="languages" name="languages"  multiple>
+                                <option disabled selected>Select languages</option>
+                                <option class="English">English</option>
+                                <option class="Hindi">Hindi</option>
+                                <option class="French">French</option>
+                                <option class="Telugu">Telugu</option>
+                                <option class="Tamil">Tamil</option>
+                                <option class="others">Others</option>
+                            </select>
+                        </div>
                         
-                    </div> <br>
+                    </div> 
                     <button class="nextBtn">
                         <span class="btnText">Next</span>
                         <i class="uil uil-navigator"></i>

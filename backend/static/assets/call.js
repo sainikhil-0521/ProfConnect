@@ -6,7 +6,9 @@ let localVideo = document.querySelector("#localVideo");
 let remoteVideo = document.querySelector("#remoteVideo");
 
 let otherUser;
+let ct;
 let remoteRTCMessage;
+let mainUser;
 
 let iceCandidatesFromCaller = [];
 let peerConnection;
@@ -145,7 +147,7 @@ function connectSocket() {
   socket.on("callRejected", (data) => {
     //when other reject our call
     //remoteRTCMessage = data.rtcMessage
-
+    console.log("yaa");
     document.getElementById("calling").style.display = "none";
     document.getElementById("main22").style.display = "none";
     document.getElementById("videos").style.display = "none";
@@ -248,9 +250,11 @@ function createConnectionAndAddStream() {
 }
 
 function processCall(userName) {
+    
   peerConnection.createOffer(
     (sessionDescription) => {
       peerConnection.setLocalDescription(sessionDescription);
+      console.log("call details",callInProgress);
       sendCall({
         name: userName,
         rtcMessage: sessionDescription,
@@ -366,9 +370,12 @@ function handleRemoteStreamRemoved(event) {
 }
 
 window.onbeforeunload = function () {
+    ct=0;
   if (callInProgress) {
     stop();
+    
   }
+  socket.emit("disconnecting",mainUser)
 };
 
 function stop() {
@@ -439,3 +446,5 @@ const setMuteButton = () => {
     <span>Mute</span>`;
   document.getElementById("muteButton").innerHTML = html;
 };
+
+

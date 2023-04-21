@@ -21,7 +21,7 @@ const router=express.Router()
 router.post("/signup",signup);
  router.post("/addUserDetails",addUser,addUserDetails);
 router.post("/valid",valid);
-router.get("/profile",auth,profile);
+router.post("/profile",auth,profile);
 // router.post("/editData",editProfile);
 
 module.exports =router;

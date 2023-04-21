@@ -167,6 +167,7 @@ async function profile(req,res){
 
   var obj = await display(req.user.email);
   if(obj){
+    console.log("obj",obj);
     res.send({obj:obj,user:"valid"});
   }
 }
