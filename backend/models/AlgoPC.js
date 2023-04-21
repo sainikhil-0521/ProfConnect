@@ -15,17 +15,17 @@ const router=express.Router()
        
         userId:{
             type:mongoose.Schema.Types.ObjectId,
-            ref: "userduplicatepc" ,
+            ref: "userpc" ,
             unique:true
         },
         scoreField:{
             type:{
-                courseType:{type:Number,min:0,max:30},
-                yearsOfExperience:{type:Number,min:0,max:20},
-                spam:{type:Number,min:0,max:10},
-                companyType:{type:Number,min:0,max:15},
-                domain:{type:Number,min:0,max:15},
-                role:{type:Number,min:0,max:25}
+                courseType:{type:Number},
+                yearsOfExperience:{type:Number},
+                spam:{type:Number},
+                companyType:{type:Number},
+                domain:{type:Number},
+                role:{type:Number}
             }
         },
         totalScore:{
@@ -38,7 +38,7 @@ const router=express.Router()
      
 
       const AlgoPC = mongoose.model(
-        "algoduplicatepc",
+        "algopc",
         AlgoPCSchema
       ); //models defined
 

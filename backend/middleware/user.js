@@ -102,10 +102,11 @@ const auth=(req,res,next)=>{
         process.env.SECRETKEY,
         async (err,authdata)=>{
           if(err){
-            console.log(err,"kavya");
+            // console.log(err,"kavya");
             res.send("notok")
           }
           else{
+            console.log("ok");
             req.user=authdata;
             next();
            //res.user has email() field 

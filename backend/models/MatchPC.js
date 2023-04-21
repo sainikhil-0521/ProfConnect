@@ -31,7 +31,7 @@ const router=express.Router()
         },
         chatId:{
             type:mongoose.Schema.Types.ObjectId,
-            ref: "chatduplicatepc" ,
+            ref: "chatpc" ,
             unique:true
         },
         unseen1:{
@@ -52,7 +52,7 @@ const router=express.Router()
   
      
       const MatchPC = mongoose.model(
-        "matchduplicatepc",
+        "matchpc",
         MatchPCSchema
       ); //models defined
 

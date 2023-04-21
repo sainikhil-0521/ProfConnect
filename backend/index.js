@@ -30,6 +30,9 @@ mongoose
     console.log("DB Connection sucessful");
     
   })
+
+  app.use("/users",require("./routes/user"))
+  app.use("/match",require("./routes/match"))
   
   app.get("/",(req,res)=>{
     console.log("server working");
@@ -78,7 +81,7 @@ app.get('/google/callback', passport.authenticate('google', { failureRedirect: '
     // Successful authentication, redirect home.
     console.log("user",req.user);
     var isfirst;
-    var userprofile=req.user;
+      let userprofile=req.user
       if(await UserPC.findOne({email:userprofile._json.email}))
       {
           isfirst="false";
@@ -87,7 +90,8 @@ app.get('/google/callback', passport.authenticate('google', { failureRedirect: '
        var user= await UserPC.create({
           googleId:userprofile.id,
           email:userprofile._json.email,
-          username:userprofile.displayName,
+          username:String(userprofile.displayName).replace(/ /g,"_"),
+          profilePic:userprofile._json.picture
 
         })
         isfirst="true";

@@ -95,7 +95,7 @@ const UserPCSchema = {
     type: [
       {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "UserPCSchema",
+        ref: "userpc",
         // unique:true
       },
     ],
