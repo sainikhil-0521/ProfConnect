@@ -250,7 +250,7 @@
                             <div class="lab-inner">
                                 <div class="lab-thumb">
                                     
-                                    <!-- <img src="assets/images/member/01.jpg" alt="member-img"> -->
+                                    <img src="assets/images/member/01.jpg" alt="member-img">
                                 </div>
                                 <div class="lab-content">
                                     <h6><a href="profile.html">Andrea Guido</a> </h6>
@@ -263,7 +263,7 @@
                         <div class="lab-item member-item style-1">
                             <div class="lab-inner">
                                 <div class="lab-thumb">
-                                    <!-- <img src="assets/images/member/02.jpg" alt="member-img"> -->
+                                    <img src="assets/images/member/02.jpg" alt="member-img">
                                 </div>
                                 <div class="lab-content">
                                     <h6><a href="profile.html">Gihan-Fernando</a></h6>
@@ -276,7 +276,7 @@
                         <div class="lab-item member-item style-1">
                             <div class="lab-inner">
                                 <div class="lab-thumb">
-                                    <!-- <img src="assets/images/member/03.jpg" alt="member-img"> -->
+                                    <img src="assets/images/member/03.jpg" alt="member-img">
                                 </div>
                                 <div class="lab-content">
                                     <h6><a href="profile.html">Swetha Bansal</a></h6>
@@ -289,7 +289,7 @@
                         <div class="lab-item member-item style-1">
                             <div class="lab-inner">
                                 <div class="lab-thumb">
-                                    <!-- <img src="assets/images/member/04.jpg" alt="member-img"> -->
+                                    <img src="assets/images/member/04.jpg" alt="member-img">
                                 </div>
                                 <div class="lab-content">
                                     <h6><a href="profile.html">Gyan-Baffour</a></h6>
@@ -302,7 +302,7 @@
                         <div class="lab-item member-item style-1">
                             <div class="lab-inner">
                                 <div class="lab-thumb">
-                                    <!-- <img src="assets/images/member/05.jpg" alt="member-img"> -->
+                                    <img src="assets/images/member/05.jpg" alt="member-img">
                                 </div>
                                 <div class="lab-content">
                                     <h6><a href="profile.html">Teszt Eleking</a></h6>
@@ -315,7 +315,7 @@
                         <div class="lab-item member-item style-1">
                             <div class="lab-inner">
                                 <div class="lab-thumb">
-                                    <!-- <img src="assets/images/member/06.jpg" alt="member-img"> -->
+                                    <img src="assets/images/member/06.jpg" alt="member-img">
                                 </div>
                                 <div class="lab-content">
                                     <h6><a href="profile.html">Zeahra Guido</a>
@@ -725,7 +725,7 @@
     <script src="assets/js/logoutHandler.js"></script>
     <script src="assets/js/functions.js"></script>
     <script>
-        var arr=window.location.href.split("?");
+        var arr=decodeURIComponent(window.location.href).split("?");
         if(arr.length==5){
             localStorage.setItem("name",arr[1]);
             localStorage.setItem("username",arr[3]);

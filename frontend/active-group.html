@@ -151,7 +151,106 @@
         </div>
     </section>
     <!-- ==========Page Header Section Ends Here========== -->
-
+    <section class="member-section padding-tb">
+        <div class="container">
+            <div class="section-header">
+                <h4 class="theme-color">Requested Profiles</h4>
+                
+            </div>
+            <div class="section-wrapper">
+                <div class="row justify-content-center g-3 g-md-4">
+                    <div class="col-xl-2 col-lg-3 col-md-4 col-6">
+                        <div class="lab-item member-item style-1">
+                            <div class="lab-inner">
+                                <div class="lab-thumb">
+                                    
+                                    <img src="assets/images/member/01.jpg" alt="member-img">
+                                </div>
+                                <div class="lab-content">
+                                    <h6><a href="profile.html">Andrea Guido</a> </h6>
+                                    <button type="button" class="btn btn-danger" style="color: white;">Accept</button>
+                                    <button type="button" class="btn btn-outline-secondary">Ignore</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-lg-3 col-md-4 col-6">
+                        <div class="lab-item member-item style-1">
+                            <div class="lab-inner">
+                                <div class="lab-thumb">
+                                    <img src="assets/images/member/02.jpg" alt="member-img">
+                                </div>
+                                <div class="lab-content">
+                                    <h6><a href="profile.html">Gihan-Fernando</a></h6>
+                                    <button type="button" class="btn btn-danger" style="color: white;">Accept</button>
+                                    <button type="button" class="btn btn-outline-secondary">Ignore</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-lg-3 col-md-4 col-6">
+                        <div class="lab-item member-item style-1">
+                            <div class="lab-inner">
+                                <div class="lab-thumb">
+                                    <img src="assets/images/member/03.jpg" alt="member-img">
+                                </div>
+                                <div class="lab-content">
+                                    <h6><a href="profile.html">Swetha Bansal</a></h6>
+                                    <button type="button" class="btn btn-danger" style="color: white;">Accept</button>
+                                    <button type="button" class="btn btn-outline-secondary">Ignore</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-lg-3 col-md-4 col-6">
+                        <div class="lab-item member-item style-1">
+                            <div class="lab-inner">
+                                <div class="lab-thumb">
+                                    <img src="assets/images/member/04.jpg" alt="member-img">
+                                </div>
+                                <div class="lab-content">
+                                    <h6><a href="profile.html">Gyan-Baffour</a></h6>
+                                    <button type="button" class="btn btn-danger" style="color: white;">Accept</button>
+                                    <button type="button" class="btn btn-outline-secondary">Ignore</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-lg-3 col-md-4 col-6">
+                        <div class="lab-item member-item style-1">
+                            <div class="lab-inner">
+                                <div class="lab-thumb">
+                                    <img src="assets/images/member/05.jpg" alt="member-img">
+                                </div>
+                                <div class="lab-content">
+                                    <h6><a href="profile.html">Teszt Eleking</a></h6>
+                                    <button type="button" class="btn btn-danger" style="color: white;">Accept</button>
+                                    <button type="button" class="btn btn-outline-secondary">Ignore</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-lg-3 col-md-4 col-6">
+                        <div class="lab-item member-item style-1">
+                            <div class="lab-inner">
+                                <div class="lab-thumb">
+                                    <img src="assets/images/member/06.jpg" alt="member-img">
+                                </div>
+                                <div class="lab-content">
+                                    <h6><a href="profile.html">Zeahra Guido</a>
+                                    </h6>
+                                    <button type="button" class="btn btn-danger" style="color: white;">Accept</button>
+                                    <button type="button" class="btn btn-outline-secondary">Ignore</button>
+                                 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+             
+            </div>
+        </div>
+    </section>
 
     <!-- ==========Active Group page Section Start Here========== -->
     <section class="group-page-section padding-tb bg-ash">
@@ -471,15 +570,16 @@
     <script src="assets/js/wow.min.js"></script>
     <script src="assets/js/isotope.pkgd.min.js"></script>
     <script src="assets/js/functions.js"></script>
-    <script src="assets/js/community.js"></script>
     <script src="assets/js/logoutHandler.js"></script>
+    <script src="assets/js/community.js"></script>
     <script>
         var logot=document.querySelector("#logout");
         logot.addEventListener("click",()=>{
             localStorage.removeItem("name");
             storagehandle();
         })
-        window.onload=storagehandle
+    
+        window.onload=fill
         window.onfocus=storagehandle
     </script>
 </body>

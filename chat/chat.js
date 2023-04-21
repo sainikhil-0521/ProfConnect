@@ -73,7 +73,7 @@ socket.on("initial_connection",(msg)=>{
 								<div class="input-group-append">
 									<span class="input-group-text attach_btn"><i class="fas fa-paperclip"></i></span>
 								</div>
-								<textarea name="" class="form-control type_msg" placeholder="Type your message..."></textarea>
+								<textarea name="" class="form-control type_msg" placeholder="Type your message..." id=${"type_msg"+element.username}></textarea>
 								<div class="input-group-append">
 									<span class="input-group-text send_btn"><i class="fas fa-location-arrow"></i></span>
 								</div>
@@ -94,22 +94,24 @@ socket.on("initial_connection",(msg)=>{
     prevdiv=document.querySelector("#"+e.target.id+"div")
     prev=e.target
     socket.emit('chat message2',localStorage.username,e.target.id)
+    console.log(e.target.id);
   })
 
   $(".fa-location-arrow").click((e)=>{
-    if($(".type_msg").val() !== ""){
-      socket.emit('chat message',$(".type_msg").val(),localStorage.username,$(".active")[0].id)
+    if($("#type_msg"+$(".active")[0].id).val() !== ""){
+      socket.emit('chat message',$("#type_msg"+$(".active")[0].id).val() ,localStorage.username,$(".active")[0].id)
       document.querySelector("#"+$(".active")[0].id+"div .msg_card_body").innerHTML+=`
                 
                 <div class="d-flex justify-content-end mb-4">
                   
                   <div class="msg_cotainer_send">
-                    ${$(".type_msg").val()}
+                    ${$("#type_msg"+$(".active")[0].id).val()}
                     <span class="msg_time">${new Date()}</span>
                   </div>
                 </div>`
-      $(".type_msg").val("")
+            $("#type_msg"+$(".active")[0].id).val("")
     }
+    console.log(e.target);
   })
 
 })
