@@ -8,13 +8,9 @@ $.ajax({
     type: "POST",
     url: "http://127.0.0.1:4000/users/profile",
     contentType: 'application/json',
-    headers:{
-        periperi:localStorage.name
+    headers: {
+        periperi:localStorage.getItem("name")
     },
-    data: JSON.stringify({
-        name:localStorage.getItem("name")
-    }),
-    dataType: 'json',
     success: function (result) {
         console.log(result)
         if ("valid"== result.user) {

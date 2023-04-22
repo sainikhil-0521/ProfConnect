@@ -96,7 +96,7 @@ const addUser=(req,res,next)=>{
 
 }
 const auth=(req,res,next)=>{
-
+    console.log("hello jwt auth here");
     var key=req.headers.periperi;
     console.log("key",key);
     jwt.verify(key,
@@ -116,5 +116,53 @@ const auth=(req,res,next)=>{
 
 
 }
+const addblog=(req,res,next)=>{
+  try{
+      console.log("ok add blog entered");
+      console.log(req.myform,"main form");
+    uploadSingle(req,res,(err) => {
+      console.log("img upload done",req.file);
+      if(err){
+        console.log(err);
+        console.log(req.file,"nikhil");
+          res.send(err)
+      }
+      else{
+          var obj={};
+          obj.username=req.body.username;
+          obj.subject=req.body.subject;
+          obj.title=req.body.title;
+          obj.content=req.body.content;
+          obj.image=req.file.location;
+         
 
-module.exports={addUser,auth}
+          console.log("obj",obj);
+          req.obj22=obj;
+          var key=req.body.key;
+          console.log("key",key);
+      jwt.verify(key,
+        process.env.SECRETKEY,
+        async (err,authdata)=>{
+          if(err){
+            console.log(err,"kavya");
+            res.send("notok")
+          }
+          else{
+            req.user=authdata;
+            next();
+           
+          }
+        })
+
+      }
+
+      })
+  }
+  catch(err){
+      res.send(err);
+    }
+
+}
+
+
+module.exports={addUser,auth,addblog}
