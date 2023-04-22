@@ -11,6 +11,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 const bcrypt = require("bcrypt");
 const { UserPC } = require("../models/UserPC");
+const { func } = require("joi");
+const { BlogPC } = require("../models/BlogPC");
 
 const saltRounds = 8;
 
@@ -171,6 +173,40 @@ async function profile(req,res){
     res.send({obj:obj,user:"valid"});
   }
 }
+async function blogAdd(req,res){
+
+  console.log("blog add entered");
+  var obj=req.obj22;
+  var email=req.user.email;
+  var blog=await BlogPC.create({
+    username:obj.username,
+    email:email,
+    subject:obj.subject,
+    title:obj.title,
+    content:obj.content,
+    image:obj.image,
+    createdAt:new Date(),
+
+  })
+  console.log(blog);
+
+}
+async function blogs(req,res){
+    console.log("one user blogs loading");
+    let email=req.user.email;
+    var blogarr=await BlogPC.find({email:email});
+    console.log("blog array",blogarr);
+    res.send({obj:blogarr,user:"valid"});
+  
+}
+async function allblogs(req,res){
+  console.log("all blogs loading");
+  let email=req.user.email;
+    var blogarr=await BlogPC.find({});
+    console.log("blog array",blogarr);
+    res.send({obj:blogarr,user:"valid"});
+
+}
 
 
-module.exports={signup,addUserDetails,valid,profile}
+module.exports={signup,addUserDetails,valid,profile,blogAdd,blogs,allblogs}
