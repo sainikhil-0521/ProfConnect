@@ -116,7 +116,22 @@ const UserPCSchema = {
     enum: ["Service-based", "Product-based"],
     default: "Service-based",
   },
-  role: {
+  role:{
+    type: String,
+    
+  },
+  interests:{
+    type: String,
+    
+  },
+  languages:{
+    type: [],
+    
+  },
+  summary:{
+    type:String,
+  },
+  level: {
     type: String,
     enum: ["level0", "level1", "level2", "level3", "level4", "level5"],
     default: "level0",

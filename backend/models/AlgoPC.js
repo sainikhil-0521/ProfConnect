@@ -25,7 +25,8 @@ const router=express.Router()
                 spam:{type:Number},
                 companyType:{type:Number},
                 domain:{type:Number},
-                role:{type:Number}
+                role:{type:Number},
+                level:{type:Number},
             }
         },
         totalScore:{

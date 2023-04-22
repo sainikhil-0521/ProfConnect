@@ -29,6 +29,17 @@ $.ajax({
             $("#domain").text(obj.domain);
             $("#summary").text(obj.summary);   
             $("#level").text(obj.level);
+            $("#pic22").attr("src",obj.profilePic);
+            $("#name").text(obj.username);
+            if(obj.isOnline){
+                $("#isActive").text("Online");
+            }
+            else{
+                $("#isActive").text("Offline");
+            }
+            $("#interests").text(obj.interests);
+            $("#languages").text(obj.languages);
+            
         }
 
                 

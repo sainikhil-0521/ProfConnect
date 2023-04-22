@@ -23,7 +23,8 @@ const biasScore = {
   spam: -5,
   companyType: 5,
   domain: 4,
-  role: 2,
+  level: 2,
+  role:3,
 };
 
 const scores = {
@@ -46,6 +47,18 @@ const scores = {
   Level4: 20,
   Level5: 25,
   spam: 0,
+  "Software developer":5,
+  "Product developer":10,
+  "Senior developer":15,
+  "Integration Engineer":20,
+  "QA":25,
+  "Sales Team  Member":30,
+  "Marketing Team Member":35,
+  "Payroll Team Member":40,
+  "Testing Team Member":45,
+  "CTO" :50,
+  "COO":55,
+  "CEO":60,
 };
 
 async function signup(req, res) {
@@ -106,6 +119,7 @@ async function addUserDetails(req, res) {
   // console.log(obj.image);
   console.log("obj", obj, req.user);
   if (obj) {
+    console.log(obj.languages);
     let check = await UserPC.updateMany(
       { email: req.user.email },
       {
@@ -119,6 +133,10 @@ async function addUserDetails(req, res) {
           company: obj.company,
           companyType: obj.companytype,
           role: obj.role,
+          interests:obj.interests,
+          languages:obj.languages,
+          level:obj.level,
+          summary:obj.summary,
           domain: obj.domain,
           profilePic: obj.image,
         },
@@ -142,7 +160,8 @@ async function addUserDetails(req, res) {
         id[0].scoreField.spam * biasScore.spam +
         scores[obj.companytype] * biasScore.companyType +
         scores[obj.domain] * biasScore.domain +
-        scores[obj.role] * biasScore.role;
+        scores[obj.level] * biasScore.level+
+        scores[obj.role]* biasScore.role;
       
       await AlgoPC.updateOne(
         { _id: id[0]._id },
@@ -156,6 +175,7 @@ async function addUserDetails(req, res) {
             "scoreField.companyType":
               scores[obj.companytype] * biasScore.companyType,
             "scoreField.domain": scores[obj.domain] * biasScore.domain,
+            "scoreField.level": scores[obj.level] * biasScore.level,
             "scoreField.role": scores[obj.role] * biasScore.role,
             totalScore:totolscore
           },
@@ -167,6 +187,7 @@ async function addUserDetails(req, res) {
         expScore * biasScore.yearsOfExperience +
         scores[obj.companytype] * biasScore.companyType +
         scores[obj.domain] * biasScore.domain +
+        scores[obj.level] * biasScore.level+
         scores[obj.role] * biasScore.role;
       let apply={
             courseType:scores[obj.coursetype] * biasScore.courseType,
@@ -174,7 +195,8 @@ async function addUserDetails(req, res) {
             spam: 0,
             companyType:scores[obj.companytype] * biasScore.companyType,
             domain: scores[obj.domain] * biasScore.domain,
-            role: scores[obj.role] * biasScore.role,
+            level: scores[obj.level] * biasScore.level,
+            role:scores[obj.role] * biasScore.role,
       }
       await AlgoPC.create(
         {

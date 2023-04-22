@@ -61,7 +61,10 @@ const addUser=(req,res,next)=>{
             obj.companytype=req.body.companytype;
             obj.country=req.body.country;
             obj.experience=req.body.experience;
-
+            obj.level=req.body.level;
+            obj.summary=req.body.summary;
+            obj.interests=req.body.interests;
+            obj.languages=req.body.languages;
             obj.dob=req.body.dob;
             obj.coursetype=req.body.coursetype;
             obj.domain=req.body.domain;
