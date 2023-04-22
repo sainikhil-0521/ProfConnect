@@ -97,7 +97,7 @@ const addUser=(req,res,next)=>{
 }
 const auth=(req,res,next)=>{
     console.log("hello jwt auth here");
-    var key=req.body.name;
+    var key=req.headers.periperi;
     console.log("key",key);
     jwt.verify(key,
         process.env.SECRETKEY,

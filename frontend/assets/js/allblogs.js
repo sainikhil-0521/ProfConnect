@@ -3,10 +3,10 @@ $.ajax({
     type: "POST",
     url: "http://127.0.0.1:4000/users/allblogs",
     contentType: 'application/json',
-    data: JSON.stringify({
-        name:localStorage.getItem("name")
-    }),
-    dataType: 'json',
+    headers: {
+        periperi:localStorage.getItem("name")
+    },
+    
     success: function (result) {
         console.log("hii ");
         console.log(result)
