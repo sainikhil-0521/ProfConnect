@@ -112,7 +112,8 @@ function fill() {
     })
 
 
-      } else {
+      }
+       else {
         window.open("404.html", "_self");
       }
     },

@@ -92,7 +92,7 @@
                 <div id="call">
                     <div class="dialWrapper">
                         <input placeholder="Whom to call?" style="text-align:center; height: 50px; font-size: xx-large;"
-                            type="text" name="callName" id="callName">
+                            type="text" name="callName" id="callName" readonly>
                         <div class="dialNumpadHWrapper">
                             <div class="dialNumber">
                             </div>
@@ -184,18 +184,20 @@
     <script src="/assets/call.js"></script>
     <script>
         document.getElementById("main22").style.display = "none";
-        document.getElementById("call").style.display = "none";
-        document.getElementById("userInfo").style.display = "none";
+        // document.getElementById("call").style.display = "none";
+        // document.getElementById("userInfo").style.display = "none";
         document.getElementById("answer").style.display = "none";
         document.getElementById("inCall").style.display = "none";
         document.getElementById("calling").style.display = "none";
         document.getElementById("videos").style.display = "none";
-
+        
     </script>
     <script>
         function login() {
-            let userName = document.getElementById("userNameInput").value;
+            // let userName = document.getElementById("userNameInput").value;
+            let userName=location.href.split("?")[1]
             myName = userName;
+            document.querySelector("#callName").value=location.href.split("?")[2]
             document.getElementById("userName").style.display = "none";
             document.getElementById("call").style.display = "block";
 
@@ -204,7 +206,7 @@
 
             connectSocket();
         }
-        
+        login() 
     </script>
 </body>
 

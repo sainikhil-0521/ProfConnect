@@ -40,7 +40,7 @@ socket.on("initial_connection",(msg)=>{
 								</div>
 								<div class="video_cam">
 									<span><i class="fas fa-video"></i></span>
-									<span><i class="fas fa-phone"></i></span>
+									
 								</div>
 							</div>
 							<span id="action_menu_btn"><i class="fas fa-ellipsis-v"></i></span>
@@ -98,7 +98,7 @@ socket.on("initial_connection",(msg)=>{
   })
 
   $(".fa-location-arrow").click((e)=>{
-    if($("#type_msg"+$(".active")[0].id).val() !== ""){
+    if($("#type_msg"+$(".active")[0].id).val().trim() !== ""){
       socket.emit('chat message',$("#type_msg"+$(".active")[0].id).val() ,localStorage.username,$(".active")[0].id)
       document.querySelector("#"+$(".active")[0].id+"div .msg_card_body").innerHTML+=`
                 
@@ -112,6 +112,10 @@ socket.on("initial_connection",(msg)=>{
             $("#type_msg"+$(".active")[0].id).val("")
     }
     console.log(e.target);
+  })
+
+  $(".fa-video").click((e)=>{
+      window.open("http://127.0.0.1:3500?"+localStorage.username+"?"+$(".active")[0].id)
   })
 
 })
