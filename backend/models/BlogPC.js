@@ -13,7 +13,6 @@ const router=express.Router()
 const BlogPCSchema = {
     username: { 
         type: String,
-        unique:true,
          required: true ,
         minlength: 4,
         maxlength: 30},

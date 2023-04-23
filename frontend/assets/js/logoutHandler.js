@@ -1,6 +1,6 @@
 const signup = document.querySelector("#signup ");
 const login = document.querySelector("#login");
-
+const profile=document.querySelector("#profile")
 const logot2 = document.querySelector("#logout");
 
 function storagehandle() {
@@ -11,7 +11,9 @@ function storagehandle() {
         console.log("okok");
         signup.style.display="none";
         login.style.display="none";
+        profile.style.display="inline-block"
         logot2.style.display = "inline-block";
+
       }
     //   if (san) {
     //     // san.innerText = "Profile";
@@ -27,7 +29,7 @@ function storagehandle() {
     } else {
       if (logot2) {
         logot2.style.display = "none";
-       
+        profile.style.display="none";
       }
     }
 }
