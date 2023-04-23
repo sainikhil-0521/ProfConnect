@@ -258,8 +258,8 @@ async function valid(req, res) {
               res.send(err);
             } else {
               console.log("jwt success", token);
-              if (data.userId == "641b1f2da200c7ee16d4afa1") {
-                res.send({ user: "admin", token: token, admin: "yesyes" });
+              if (data.email == "adminprofconnect@gmail.com") {
+                res.send({ user: "admin", token: token, admin: "yesyes",username:"admin" });
               } else
                 res.send({ user: "valid pwd", username: uname, token: token });
             }
@@ -315,5 +315,38 @@ async function allblogs(req,res){
 
 }
 
+async function userType(req,res){
+  let email=req.user.email;
+  let doc=await UserPC.findOne({email:email})
+  let result={}
+  result.type=doc.userType
+  if(doc.userType!="free"){
+    if(doc.subscriptionEnd>(new Date())){
+      result.ends=doc.subscriptionEnd;
+    }
+    else{
+      let docc=await UserPC.findOneAndUpdate({email:email},{$set:{userType:"free"}})
+      result.type="free"
+    }
+      
+  }
+  console.log(new Date());
+  res.send(result)
+}
 
-module.exports={signup,addUserDetails,valid,profile,blogAdd,blogs,allblogs}
+async function userTypeChange(req,res){
+
+  let email=req.user.email
+  console.log(req.body.type);
+  let d=new Date()
+  if(req.body.type=="silver")
+    d.setUTCDate(31+d.getUTCDate())
+  else
+    d.setUTCDate(365+d.getUTCDate())
+  await UserPC.updateOne({email:email},{$set:{userType:req.body.type,subscriptionEnd:d}})
+
+  res.send("coolthen")
+}
+
+
+module.exports={signup,addUserDetails,valid,profile,blogAdd,blogs,allblogs,userType,userTypeChange}

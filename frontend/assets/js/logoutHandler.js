@@ -1,5 +1,6 @@
 const signup = document.querySelector("#signup ");
 const login = document.querySelector("#login");
+const san = document.querySelector(".profileclass");
 
 const logot2 = document.querySelector("#logout");
 
@@ -13,20 +14,27 @@ function storagehandle() {
         login.style.display="none";
         logot2.style.display = "inline-block";
       }
-    //   if (san) {
-    //     // san.innerText = "Profile";
-    //     // san.setAttribute("href", "/frontend/html/profile.html");
-    //     // san.setAttribute("target", "");
-    //     if(localStorage.admin){
-    //       san.innerText = "Admin";
-    //       san.setAttribute("href", "/frontend/html/admin.html");
-    //       san.setAttribute("target", "");
-    //     }
+      if (san) {
+        san.style.display=""
+        if(localStorage.admin){
+          san.innerText = "Admin";
+          san.setAttribute("href", "admin.html");
+          san.setAttribute("target", "_self");
+        }
+      }
         
       
     } else {
       if (logot2) {
         logot2.style.display = "none";
+        if (san) {
+          san.style.display="none"
+          if(localStorage.admin){
+            san.innerText = "Profile";
+            san.setAttribute("href", "profile.html");
+            san.setAttribute("target", "_self");
+          }
+        }
        
       }
     }

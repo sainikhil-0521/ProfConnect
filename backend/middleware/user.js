@@ -112,6 +112,7 @@ const auth=(req,res,next)=>{
           else{
             console.log("ok");
             req.user=authdata;
+            console.log(req.body.data);
             next();
            //res.user has email() field 
           }

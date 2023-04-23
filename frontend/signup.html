@@ -88,7 +88,7 @@
                                 <a href="#0">Features</a>
                                 <ul class="submenu">
                     
-                                    <li><a href="profile.html">Profile</a></li>
+                                    <li><a href="profile.html" class="profileclass">Profile</a></li>
                                     <li><a href="pricing-plan.html">Pricing Plan</a></li>
                                     <li><a href="404.html">404 Page</a></li>
 
@@ -347,10 +347,16 @@
     <script src="assets/js/functions.js"></script>
     <script src="assets/js/logoutHandler.js"></script>
     <script>
+        if(!localStorage.name)
+            san.style.display="none"
         var logot=document.querySelector("#logout");
         logot.addEventListener("click",()=>{
             localStorage.removeItem("name");
             storagehandle();
+            san.style.display="none"
+            if(localStorage.admin){
+                localStorage.removeItem("admin")
+            }
         })
         window.onload=storagehandle
         window.onfocus=storagehandle

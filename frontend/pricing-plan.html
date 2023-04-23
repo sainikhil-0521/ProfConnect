@@ -158,37 +158,25 @@
                         <div class="col-lg-4 col-sm-6">
                             <div class="price-item">
                                 <div class="price-item-inner">
-                                    <div class="price-top">
-                                        <h6>Basic Package</h6>
-                                        <h2>$29.00</h2>
-                                        <p>$29.00 Now And Then $90.00
-                                            Per Month.</p>
+                                    <div class="price-top free">
+                                        <h6>Basic</h6>
+                                        <h2>Free</h2>
+                                        
                                     </div>
                                     <div class="price-bottom">
                                         <ul>
                                             <li><i class="icofont-check-circled"></i>
-                                                <p>View members directory</p>
+                                                <p>Maximum connecting requests 3</p>
                                             </li>
                                             <li><i class="icofont-check-circled"></i>
                                                 <p>View members profile</p>
                                             </li>
-                                            <li><i class="icofont-check-circled"></i>
-                                                <p>Access group directory</p>
-                                            </li>
-                                            <li><i class="icofont-check-circled"></i>
-                                                <p>Access to groups</p>
-                                            </li>
+                                            
                                             <li><i class="icofont-close-circled"></i>
-                                                <p>View site activity</p>
-                                            </li>
-                                            <li><i class="icofont-close-circled"></i>
-                                                <p>Send Private messages</p>
-                                            </li>
-                                            <li><i class="icofont-close-circled"></i>
-                                                <p>Add media to your profile</p>
+                                                <p>Filtering based recommending</p>
                                             </li>
                                         </ul>
-                                        <a href="#" class="purchase-btn">Purchase Now</a>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -196,37 +184,26 @@
                         <div class="col-lg-4 col-sm-6">
                             <div class="price-item">
                                 <div class="price-item-inner">
-                                    <div class="price-top">
+                                    <div class="price-top silver">
                                         <h6>Silver Package</h6>
-                                        <h2>$290.00</h2>
-                                        <p>$290.00 Now And Then $390.00
-                                            Per Month.</p>
+                                        <h2>$25</h2>
+                                        <p>Per Month</p>
+                                        
                                     </div>
                                     <div class="price-bottom">
                                         <ul>
                                             <li><i class="icofont-check-circled"></i>
-                                                <p>View members directory</p>
+                                                <p>Unlimited connecting requests</p>
                                             </li>
                                             <li><i class="icofont-check-circled"></i>
                                                 <p>View members profile</p>
                                             </li>
+                                            
                                             <li><i class="icofont-check-circled"></i>
-                                                <p>Access group directory</p>
-                                            </li>
-                                            <li><i class="icofont-check-circled"></i>
-                                                <p>Access to groups</p>
-                                            </li>
-                                            <li><i class="icofont-check-circled"></i>
-                                                <p>View site activity</p>
-                                            </li>
-                                            <li><i class="icofont-close-circled"></i>
-                                                <p>Send Private messages</p>
-                                            </li>
-                                            <li><i class="icofont-close-circled"></i>
-                                                <p>Add media to your profile</p>
+                                                <p>Filtering based recommending</p>
                                             </li>
                                         </ul>
-                                        <a href="#" class="purchase-btn">Purchase Now</a>
+                                        <a href="#" class="purchase-btn silverbtn">Purchase Now</a>
                                     </div>
                                 </div>
                             </div>
@@ -234,37 +211,25 @@
                         <div class="col-lg-4 col-sm-6">
                             <div class="price-item">
                                 <div class="price-item-inner">
-                                    <div class="price-top">
+                                    <div class="price-top gold">
                                         <h6>Gold Package</h6>
-                                        <h2>$390.00</h2>
-                                        <p>$390.00 Now And Then $490.00
-                                            Per Month.</p>
+                                        <h2>$100.00</h2>
+                                        <p>Per Year.</p>
                                     </div>
                                     <div class="price-bottom">
                                         <ul>
                                             <li><i class="icofont-check-circled"></i>
-                                                <p>View members directory</p>
+                                                <p>Unlimited connecting requests</p>
                                             </li>
                                             <li><i class="icofont-check-circled"></i>
                                                 <p>View members profile</p>
                                             </li>
+                                            
                                             <li><i class="icofont-check-circled"></i>
-                                                <p>Access group directory</p>
-                                            </li>
-                                            <li><i class="icofont-check-circled"></i>
-                                                <p>Access to groups</p>
-                                            </li>
-                                            <li><i class="icofont-check-circled"></i>
-                                                <p>View site activity</p>
-                                            </li>
-                                            <li><i class="icofont-check-circled"></i>
-                                                <p>Send Private messages</p>
-                                            </li>
-                                            <li><i class="icofont-check-circled"></i>
-                                                <p>Add media to your profile</p>
+                                                <p>Filtering based recommending</p>
                                             </li>
                                         </ul>
-                                        <a href="#" class="purchase-btn">Purchase Now</a>
+                                        <a href="#" class="purchase-btn goldbtn">Purchase Now</a>
                                     </div>
                                 </div>
                             </div>
@@ -435,11 +400,19 @@
     <script src="assets/js/isotope.pkgd.min.js"></script>
     <script src="assets/js/functions.js"></script>
     <script src="assets/js/logoutHandler.js"></script>
+    <script src="assets/js/pricing-plan.js"></script>
     <script>
+        if(!localStorage.name)
+            san.style.display="none"
         var logot=document.querySelector("#logout");
         logot.addEventListener("click",()=>{
             localStorage.removeItem("name");
             storagehandle();
+            san.style.display="none"
+            if(localStorage.admin){
+                localStorage.removeItem("admin")
+            }
+
         })
         window.onload=storagehandle
         window.onfocus=storagehandle

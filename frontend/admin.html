@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard</title>
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/admin.css"/>
+  </head>
+  <body>
+    <div class="container">
+      <aside>
+        <div class="top">
+          <div class="logo">
+            
+            <h2 class="homee">@Prof<span class="danger">Connect</span></h2>
+          </div>
+          <div class="close" id="close-btn">
+            <span class="material-icons-sharp"> close </span>
+          </div>
+        </div>
+
+        <div class="sidebar">
+          <a href="#" class="main1 active">
+            <span class="material-icons-sharp"> dashboard </span>
+            <h3>Dashboard</h3>
+          </a>
+          <a href="#" class="main2">
+            <span class="material-icons-sharp"> person_outline </span>
+            <h3>Customers</h3>
+          </a>
+          <a href="#" class="main3">
+            <span class="material-icons-sharp"> receipt_long </span>
+            <h3>Properties</h3>
+          </a>
+          <a href="#" class="main4">
+            <span class="material-icons-sharp"> insights </span>
+            <h3>Analytics</h3>
+          </a>
+         
+
+          <a href="#" class="logout">
+            <span class="material-icons-sharp"> logout </span>
+            <h3>Logout</h3>
+          </a>
+        </div>
+      </aside>
+
+      <main class="main1 activemain">
+        <h1>Dashboard</h1>
+
+
+        <div class="insights">
+          <!-- SALES -->
+          <div class="sales">
+            <span class="material-icons-sharp"> analytics </span>
+            <div class="middle">
+              <div class="left">
+                <h3>Total Users</h3>
+                <h1 id="usersCount">25,024</h1>
+              </div>
+            </div>
+            <small class="text-muted"> Last 24 hours </small>
+          </div>
+
+          <!-- EXPENSES -->
+          <div class="expenses">
+            <span class="material-icons-sharp"> bar_chart </span>
+            <div class="middle">
+              <div class="left">
+                <h3>Total Matches</h3>
+                <h1 id="propertiesCount">14,160</h1>
+              </div>
+            </div>
+            <small class="text-muted"> Last 24 hours </small>
+          </div>
+
+          <!-- INCOME -->
+          <div class="income">
+            <span class="material-icons-sharp"> stacked_line_chart </span>
+            <div class="middle">
+              <div class="left">
+                <h3>Total Requests</h3>
+                <h1 id="requestsCount">10,864</h1>
+              </div>
+            </div>
+            <small class="text-muted"> Last 24 hours </small>
+          </div>
+        </div>
+
+        <div class="recent-orders">
+     
+          <h2>Company vs users</h2>
+          <canvas id="mainChart"></canvas>
+          
+          <a href="#">Show All</a>
+        </div>
+      </main>
+
+      <main class="main2">
+        <div class="recent-orders">
+          <h2>Users</h2>
+          <div class="input-box">
+            <i class="uil uil-search"></i>
+            <input type="text" placeholder="name or email..."  class="searchbaruser" onkeyup="search_user()"/>
+          </div>
+          <table id="userData">
+            <thead>
+              <tr>
+                <th>User Name</th>
+                <th>email</th>
+                <th>CourseType</th>
+                <th>UserType</th>
+                <th>Experience</th>
+                <th>MatchedProfile</th>
+              </tr>
+            </thead>
+            <!-- Add tbody here | JS insertion -->
+          </table>
+          <a href="#">Show All</a>
+        </div>
+      </main>
+
+      <main class="main3">
+        <div class="recent-orders">
+          <h2>Properties</h2>
+          <div class="input-box">
+            <i class="uil uil-search"></i>
+            <input type="text" placeholder="property/owner name..." class="searchbarproperty" onkeyup="search_property()"/>
+          </div>
+          <table id="propertyData">
+            <thead>
+              <tr>
+                <th>User1</th>
+                <th>User2</th>
+                <th>CreatedOn</th>
+              </tr>
+            </thead>
+            <!-- Add tbody here | JS insertion -->
+          </table>
+          <a href="#">Show All</a>
+        </div>
+      </main>
+
+      <main class="main4">
+        <h2>Location Vs Users</h2>
+        <canvas id="myChart"></canvas>
+        <h2>ROles Based Users</h2>
+        <canvas id="myChart2"></canvas>
+        
+      </main>
+
+      <div class="right">
+        <div class="top">
+          <button id="menu-btn">
+            <span class="material-icons-sharp"> menu </span>
+          </button>
+          <div class="theme-toggler">
+            <span class="material-icons-sharp active"> light_mode </span>
+            <span class="material-icons-sharp"> dark_mode </span>
+          </div>
+          <div class="profile">
+            <div class="info">
+              <p>Hey, <b>Bruno</b></p>
+              <small class="text-muted">Admin</small>
+            </div>
+            <div class="profile-photo">
+              <!-- <img src="../images/profile-1.jpg" alt="Profile Picture" /> -->
+            </div>
+          </div>
+        </div>
+
+       
+      </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <!-- <script src="../js/constants/recent-order-data.js"></script>
+    <script src="../js/constants/update-data.js"></script>
+    <script src="../js/constants/sales-analytics-data.js"></script> -->
+    <!-- <script src="../js/logoutStorageHandle.js"></script> -->
+    <script src="assets/js/admin.js"></script>
+    <script>
+      $(".homee").on("click",(e)=>{
+        window.open("index.html","_self")
+      })
+    </script>
+  </body>
+</html>

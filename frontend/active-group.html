@@ -16,8 +16,69 @@
 
     <title>ProfConnect</title>
     <style>
+        p,.close{
+            cursor: pointer;
+        }
         .group-count{
             cursor: pointer;   
+        }
+        .overlay,.overlay2,[class^='zz'] {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            transition: opacity 500ms;
+            visibility: hidden;
+            opacity: 0;
+            z-index: 10;
+        }
+        .target {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .popup {
+            margin: 20% auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 5px;
+            width: 30%;
+            position: relative;
+            transition: all 5s ease-in-out;
+        }
+
+        .popup h2 {
+            margin-top: 0;
+            color: #333;
+            font-family: Tahoma, Arial, sans-serif;
+        }
+        .popup .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            transition: all 200ms;
+            font-size: 30px;
+            font-weight: bold;
+            text-decoration: none;
+            color: #333;
+        }
+        .popup .close:hover {
+            color: #06D85F;
+        }
+        .popup .content {
+            max-height: 30%;
+            overflow: auto;
+        }
+        .searchbtn{
+            background-color:#df314d;
+            border-color: #df314d;
+            color: white;
+            padding: 0.5%;
+        }
+        .searchbtn:active{
+            background-color: #df0a2d;
         }
     </style>
 </head>
@@ -94,7 +155,7 @@
                                 <a href="#0">Features</a>
                                 <ul class="submenu">
                     
-                                    <li><a href="profile.html">Profile</a></li>
+                                    <li><a href="profile.html" class="profileclass">Profile</a></li>
                                     <li><a href="pricing-plan.html">Pricing Plan</a></li>
                                     <li><a href="404.html">404 Page</a></li>
 
@@ -251,7 +312,98 @@
     </section>
 
     <!-- ==========Active Group page Section Start Here========== -->
+    <div id="popup1" class="overlay">
+        <div class="popup">
+            <h2>Oops....!</h2>
+            <a class="close" href="#">&times;</a>
+            <div class="content">
+                You have crossed today connecting Limit! <br>subscribe for Unlimited connecting
+            </div>
+        </div>
+    </div>
+    <div id="popup1" class="overlay2">
+        <div class="popup">
+            <h2>Oops....!</h2>
+            <a class="close" href="#">&times;</a>
+            <div class="content">
+                You must have subscription to add filters.
+            </div>
+        </div>
+    </div>
+
+    <!-- searchingg -->
+    <section class="member-page-section">
+        <div class="container">
+            <div class="member-filter">
+                <div class="member-filter-inner">
+                    <form id="filter-form" class="filter-form" name="filter-form">
+                        
+                        <div class="gender">
+                            <div class="custom-select right w-100">
+                                <select name="companyType" id="companyType" class="">
+                                    <option  selected>Company Type</option>
+                                    <option value="Product-based">Product-based</option>
+                                    <option value="Service-based">Service-based</option>
+                                    
+                                    
+                                </select>
+                            </div>
+                        </div>
+                        <div class="person">
+                            <div class="custom-select right w-100">
+                                <select name="level" id="level" class="">
+                                    <option  selected>Level</option>
+                                    <option value="0">Level0</option>
+                                    <option value="1">Level1</option>
+                                    <option value="2">Level2</option>
+                                    <option value="3">Level3</option>
+                                    <option value="4">Level4</option>
+                                    <option value="5">Level5</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="person">
+                            <div class="custom-select right w-100">
+                                <select name="gender" id="gender" class="" placeholder="Gender">
+                                    <option  selected>Gender</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                    
+                                </select>
+                            </div>
+                        </div>
+                        <div class="city">
+                            <div class="custom-select right w-100">
+                                <select name="country" id="country" class="">
+                                    <option  selected>Choose Your Country
+                                    </option>
+                                    <option value="Usa">Usa</option>
+                                    <option value="Uk">Uk</option>
+                                    <option value="Spain">Spain</option>
+                                    <option value="Brazil">Brazil</option>
+                                    <option value="France">France</option>
+                                    <option value="Newzeland">Newzeland</option>
+                                    <option value="Australia">Australia</option>
+                                    <option value="Bangladesh">Bangladesh</option>
+                                    <option value="Turki">Turki</option>
+                                    <option value="Chine">Chine</option>
+                                    <option value="India">India</option>
+                                    <option value="Canada">Canada</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button class="searchbtn" type="button">Search now <i class="icofont-search-2"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
     <section class="group-page-section padding-tb bg-ash">
+        
+       
         <div class="container">
             <ul class="group-search">
                 <li class="group-count">
@@ -570,12 +722,22 @@
     <script src="assets/js/logoutHandler.js"></script>
     <script src="assets/js/community.js"></script>
     <script>
+        if(!localStorage.name)
+        {    
+            
+            san.style.display="none"
+            window.open("login.html","_self")
+        }
         var logot=document.querySelector("#logout");
         logot.addEventListener("click",()=>{
             localStorage.removeItem("name");
             storagehandle();
+            san.style.display="none"
+            if(localStorage.admin){
+                localStorage.removeItem("admin")
+            }
+
         })
-    
         window.onload=fill
         window.onfocus=storagehandle
     </script>
