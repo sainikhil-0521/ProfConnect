@@ -1,7 +1,6 @@
 const signup = document.querySelector("#signup ");
 const login = document.querySelector("#login");
-const san = document.querySelector(".profileclass");
-
+const profile=document.querySelector("#profile")
 const logot2 = document.querySelector("#logout");
 
 function storagehandle() {
@@ -12,14 +11,16 @@ function storagehandle() {
         console.log("okok");
         signup.style.display="none";
         login.style.display="none";
+        profile.style.display="inline-block"
         logot2.style.display = "inline-block";
+
       }
-      if (san) {
-        san.style.display=""
+      if (profile) {
+        
         if(localStorage.admin){
-          san.innerText = "Admin";
-          san.setAttribute("href", "admin.html");
-          san.setAttribute("target", "_self");
+          profile.innerText = "Admin";
+          profile.setAttribute("href", "admin.html");
+          profile.setAttribute("target", "_self");
         }
       }
         
@@ -27,15 +28,17 @@ function storagehandle() {
     } else {
       if (logot2) {
         logot2.style.display = "none";
-        if (san) {
-          san.style.display="none"
+        if (profile) {
+          profile.style.display="none"
           if(localStorage.admin){
-            san.innerText = "Profile";
-            san.setAttribute("href", "profile.html");
-            san.setAttribute("target", "_self");
+            profile.innerText = "Profile";
+            profile.setAttribute("href", "profile.html");
+            profile.setAttribute("target", "_self");
+            
           }
         }
        
+        profile.style.display="none";
       }
     }
 }

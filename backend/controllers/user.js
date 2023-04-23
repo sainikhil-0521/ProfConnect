@@ -314,6 +314,15 @@ async function allblogs(req,res){
     res.send({obj:blogarr,user:"valid"});
 
 }
+async function adminblogs(req,res){
+  console.log("admin blogs loading");
+  let email=req.user.email;
+    var blogarr=await BlogPC.find({email:"adminprofconnect@gmail.com"});
+    console.log("blog array",blogarr);
+    res.send({obj:blogarr,user:"valid"});
+
+}
+
 
 async function userType(req,res){
   let email=req.user.email;
@@ -349,4 +358,4 @@ async function userTypeChange(req,res){
 }
 
 
-module.exports={signup,addUserDetails,valid,profile,blogAdd,blogs,allblogs,userType,userTypeChange}
+module.exports={signup,addUserDetails,valid,profile,blogAdd,blogs,allblogs,adminblogs,userType,userTypeChange}

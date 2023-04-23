@@ -88,8 +88,9 @@
                                 <a href="#0">Features</a>
                                 <ul class="submenu">
                     
-                                    <li><a href="profile.html" class="profileclass">Profile</a></li>
+                                    
                                     <li><a href="pricing-plan.html">Pricing Plan</a></li>
+                                    <li><a href="contact.html">Contact Us</a></li>
                                     <li><a href="404.html">404 Page</a></li>
 
                                 </ul>
@@ -100,12 +101,13 @@
                             <li>
                                 <a href="#0">Blog</a>
                                 <ul class="submenu">
-                                    <li><a href="blog.html">Blog</a></li>
-                                    <li><a href="blog-single.html">Blog Single</a></li>
+                                    <li><a href="blog.html">All Blogs</a></li>
+                                    <li ><a href="blog-single.html">My Blogs</a></li>
                                 </ul>
                             </li>
-                            <li><a href="contact.html">Contact</a></li>
+                            <li id="profile"><a href="profile.html">Profile</a></li>
                         </ul>
+                            
                         <a href="login.html" class="login" id="login">LOG IN</a>
                         <a href="signup.html" class="signup" id="signup">SIGN UP</a>
                         <a href="" class="logout" id="logout"><i class="icofont-user"></i><span>LOGOUT</span> </a>
@@ -251,52 +253,7 @@
                     </div>
                     <div class="col-lg-4 col-md-6 col-12">
                         <div class="footer-middle-item-wrapper">
-                            <div class="footer-middle-item mb-lg-0">
-                                <div class="fm-item-title">
-                                    <h4>our Recent news</h4>
-                                </div>
-                                <div class="fm-item-content">
-                                    <div class="fm-item-widget lab-item">
-                                        <div class="lab-inner">
-                                            <!-- <div class="lab-thumb">
-                                                <a href="#"> <img src="assets/images/footer/01.jpg"
-                                                        alt="footer-widget-img"></a>
-                                            </div> -->
-                                            <div class="lab-content">
-                                                <h6><a href="blog-single.html">Enable Seamin Matera Forin And Our
-                                                        Orthonal Create Vortals.</a></h6>
-                                                <p>July 23, 2021</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="fm-item-widget lab-item">
-                                        <div class="lab-inner">
-                                            <!-- <div class="lab-thumb">
-                                                <a href="#"><img src="assets/images/footer/02.jpg"
-                                                        alt="footer-widget-img"></a>
-                                            </div> -->
-                                            <div class="lab-content">
-                                                <h6><a href="blog-single.html">Dynamca Network Otuitive Catays For
-                                                        Plagiarize Mindshare After</a></h6>
-                                                <p>July 23, 2021</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="fm-item-widget lab-item">
-                                        <div class="lab-inner">
-                                            <!-- <div class="lab-thumb">
-                                                <a href="#"><img src="assets/images/footer/03.jpg"
-                                                        alt="footer-widget-img"></a>
-                                            </div> -->
-                                            <div class="lab-content">
-                                                <h6><a href="blog-single.html">Dynamca Network Otuitive Catays For
-                                                        Plagiarize Mindshare After</a></h6>
-                                                <p>July 23, 2021</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6 col-12">
@@ -347,13 +304,12 @@
     <script src="assets/js/functions.js"></script>
     <script src="assets/js/logoutHandler.js"></script>
     <script>
-        if(!localStorage.name)
-            san.style.display="none"
+       
         var logot=document.querySelector("#logout");
         logot.addEventListener("click",()=>{
             localStorage.removeItem("name");
             storagehandle();
-            san.style.display="none"
+          
             if(localStorage.admin){
                 localStorage.removeItem("admin")
             }
