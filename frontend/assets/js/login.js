@@ -12,7 +12,7 @@ sub.addEventListener("click",(e)=>{
             email:email,
            password:pwd,	
         }),
-        dataType: 'json',
+        
         success:function (resp){
             console.log(resp);
             if(resp.token){

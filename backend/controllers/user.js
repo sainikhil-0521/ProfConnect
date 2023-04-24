@@ -62,7 +62,8 @@ const scores = {
 };
 
 async function signup(req, res) {
-  console.log("signup entered");
+  
+    console.log("signup entered");
   username = req.body.username;
   email = req.body.email;
   password = req.body.password;
@@ -119,10 +120,14 @@ async function signup(req, res) {
     
     res.send("notok?password and confirm password not same");
   }
+  
+  
 }
 
 async function addUserDetails(req, res) {
-  console.log("add user details");
+  
+  try {
+    console.log("add user details");
   let obj = req.obj22;
   // if (req.file) obj.image = "../images/" + req.file.originalname;
   // console.log(obj.image);
@@ -222,6 +227,9 @@ async function addUserDetails(req, res) {
   } else {
     res.send("object null");
   }
+  } catch (error) {
+    console.log(error);
+  }
 }
 async function display(name) {
   try {
@@ -282,16 +290,21 @@ async function valid(req, res) {
 }
 
 async function profile(req,res){
-  console.log("pprrooffiillee");
-  var obj = await display(req.user.email);
+  
+
+  try {
+    var obj = await display(req.user.email);
   if(obj){
     console.log("obj",obj);
     res.send({obj:obj,user:"valid"});
   }
+  } catch (error) {
+    console.log(error);
+  }
 }
 async function blogAdd(req,res){
-
-  console.log("blog add entered");
+  try {
+    console.log("blog add entered");
   var obj=req.obj22;
   var email=req.user.email;
   var blog=await BlogPC.create({
@@ -305,30 +318,51 @@ async function blogAdd(req,res){
 
   })
   console.log(blog);
+    
+  } catch (error) {
+    console.log(error);
+  }
+
+  
 
 }
 async function blogs(req,res){
+  try {
     console.log("one user blogs loading");
     let email=req.user.email;
     var blogarr=await BlogPC.find({email:email});
     console.log("blog array",blogarr);
     res.send({obj:blogarr,user:"valid"});
+  } catch (error) {
+    console.log(error);
+  }
+    
   
 }
 async function allblogs(req,res){
-  console.log("all blogs loading");
+  try {
+    console.log("all blogs loading");
   let email=req.user.email;
     var blogarr=await BlogPC.find({});
     console.log("blog array",blogarr);
     res.send({obj:blogarr,user:"valid"});
+  } catch (error) {
+    console.log(error);
+  }
+  
 
 }
 async function adminblogs(req,res){
-  console.log("admin blogs loading");
-  let email=req.user.email;
-    var blogarr=await BlogPC.find({email:"adminprofconnect@gmail.com"});
-    console.log("blog array",blogarr);
-    res.send({obj:blogarr,user:"valid"});
+  try {
+    console.log("admin blogs loading");
+    let email=req.user.email;
+      var blogarr=await BlogPC.find({email:"adminprofconnect@gmail.com"});
+      console.log("blog array",blogarr);
+      res.send({obj:blogarr,user:"valid"});
+  } catch (error) {
+    console.log(error);
+  }
+ 
 
 }
 
