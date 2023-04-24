@@ -13,7 +13,7 @@ sign.addEventListener("click",(e)=>{
             password:signupform.password.value,
             cpassword:signupform.cpassword.value,
         }),
-        dataType: 'json',
+        // dataType: 'json',
         success: function (result) {
             console.log(result)
             if ("valid"== result.user) {
@@ -35,6 +35,15 @@ sign.addEventListener("click",(e)=>{
                                 alert("enter right password!")
                             }
                         }
+                else{
+                    console.log(result);
+                        let set=result.split("?")
+                        $(".alert").html(set[1])
+                        $(".alert").css("display","inline-block") 
+                        setTimeout(()=>{
+                            $(".alert").css("display","none") 
+                        },3000)
+                }
 
                     
             }

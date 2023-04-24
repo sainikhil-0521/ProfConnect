@@ -18,9 +18,8 @@ function storagehandle() {
       if (profile) {
         
         if(localStorage.admin){
-          profile.innerText = "Admin";
-          profile.setAttribute("href", "admin.html");
-          profile.setAttribute("target", "_self");
+          profile.innerHTML = `<a href="admin.html">Admin</a>`
+          
         }
       }
         
@@ -31,9 +30,7 @@ function storagehandle() {
         if (profile) {
           profile.style.display="none"
           if(localStorage.admin){
-            profile.innerText = "Profile";
-            profile.setAttribute("href", "profile.html");
-            profile.setAttribute("target", "_self");
+            profile.innerHTML = `<a href="profile.html">Profile</a>`
             
           }
         }

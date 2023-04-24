@@ -82,8 +82,10 @@ async function signup(req, res) {
           async (err, token) => {
             if (err) {
               console.log("error", err);
-              res.send(err);
+              res.send("notok?error");
             } else {
+
+            try{
               let user = new UserPC({
                 username: username,
                 email: email,
@@ -100,15 +102,22 @@ async function signup(req, res) {
                 uname: det.username,
                 email: det.email,
               });
+
+            }
+            catch{
+              res.send("notok?Error with username or email");
+            }
+
             }
           }
         );
       } else {
-        res.send("notok");
+        res.send("notok?error with password");
       }
     });
   } else {
-    alert("password and confirm password is not same!");
+    
+    res.send("notok?password and confirm password not same");
   }
 }
 
@@ -273,7 +282,7 @@ async function valid(req, res) {
 }
 
 async function profile(req,res){
-
+  console.log("pprrooffiillee");
   var obj = await display(req.user.email);
   if(obj){
     console.log("obj",obj);
