@@ -13,7 +13,7 @@ sign.addEventListener("click",(e)=>{
             password:signupform.password.value,
             cpassword:signupform.cpassword.value,
         }),
-        dataType: 'json',
+       
         success: function (result) {
             console.log(result)
             if ("valid"== result.user) {
