@@ -140,60 +140,120 @@
                                     <h3>Introducing ProfConnect</h3>
                                     <p>Connect With <strong>Professionals </strong> Your connection
                                          is Just a Click Away.</p>
-                                    <form action="/" class="banner-form">
+                                         <!-- <form id="filter-form" class="filter-form" name="filter-form">
+                        
+                                            <div class="gender">
+                                                <div class="custom-select right w-100">
+                                                    <select name="companyType" id="companyType" class="">
+                                                        <option  selected>Company Type</option>
+                                                        <option value="Product-based">Product-based</option>
+                                                        <option value="Service-based">Service-based</option>
+                                                        
+                                                        
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="person">
+                                                <div class="custom-select right w-100">
+                                                    <select name="level" id="level" class="">
+                                                        <option  selected>Level</option>
+                                                        <option value="0">Level0</option>
+                                                        <option value="1">Level1</option>
+                                                        <option value="2">Level2</option>
+                                                        <option value="3">Level3</option>
+                                                        <option value="4">Level4</option>
+                                                        <option value="5">Level5</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="person">
+                                                <div class="custom-select right w-100">
+                                                    <select name="gender" id="gender" class="" placeholder="Gender">
+                                                        <option  selected>Gender</option>
+                                                        <option value="Male">Male</option>
+                                                        <option value="Female">Female</option>
+                                                        
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="city">
+                                                <div class="custom-select right w-100">
+                                                    <select name="country" id="country" class="">
+                                                        <option  selected>Choose Your Country
+                                                        </option>
+                                                        <option value="Usa">Usa</option>
+                                                        <option value="Uk">Uk</option>
+                                                        <option value="Spain">Spain</option>
+                                                        <option value="Brazil">Brazil</option>
+                                                        <option value="France">France</option>
+                                                        <option value="Newzeland">Newzeland</option>
+                                                        <option value="Australia">Australia</option>
+                                                        <option value="Bangladesh">Bangladesh</option>
+                                                        <option value="Turki">Turki</option>
+                                                        <option value="Chine">Chine</option>
+                                                        <option value="India">India</option>
+                                                        <option value="Canada">Canada</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <button class="searchbtn" type="button">Search now <i class="icofont-search-2"></i></button>
+                                        </form> -->
+                                    <form action="/" class="banner-form" id="filter-form" name="filter-form">
+                                        <div class="person">
+                                            <div class="custom-select right w-100">
+                                                <select name="gender" id="gender" class="" placeholder="Gender">
+                                                    <option  selected>Gender</option>
+                                                    <option value="Male">Male</option>
+                                                    <option value="Female">Female</option>
+                                                    
+                                                </select>
+                                            </div>
+                                        </div>
                                         <div class="gender">
-                                            <label for="gender" class="left">I am a </label>
-                                            <div class="custom-select right">
-                                                <select name="gender" id="gender" class="">
-                                                    <option value="0">Select Profession</option>
-                                                    <option value="1">Entrepeneur</option>
-                                                    <option value="2">Freelancer</option>
-                                                    <option value="3">Educator</option>
-                                                    <option value="4">Software Engineer</option>
-                                                    <option value="5">others</option>
-
+                                            <div class="custom-select right w-100">
+                                                <select name="companyType" id="companyType" class="">
+                                                    <option  selected>Company Type</option>
+                                                    <option value="Product-based">Product-based</option>
+                                                    <option value="Service-based">Service-based</option>
+                                                    
+                                                    
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="person">
-                                            <label for="gender-two" class="left">Looking for</label>
-                                            <div class="custom-select right">
-                                                <select name="gender" id="gender-two" class="">
-                                                    <option value="0">Select Profession</option>
-                                                    <option value="1">Entrepeneur</option>
-                                                    <option value="2">Freelancer</option>
-                                                    <option value="3">Educator</option>
-                                                    <option value="4">Software Engineer</option>
-                                                    <option value="5">others</option>
+                                            <div class="custom-select right w-100">
+                                                <select name="level" id="level" class="">
+                                                    <option  selected>Level</option>
+                                                    <option value="0">Level0</option>
+                                                    <option value="1">Level1</option>
+                                                    <option value="2">Level2</option>
+                                                    <option value="3">Level3</option>
+                                                    <option value="4">Level4</option>
+                                                    <option value="5">Level5</option>
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="age">
-                                            <label for="age" class="left">Experience</label>
-                                            <div class="right d-flex justify-content-between">
-                                                <div class="custom-select">
-                                                    <select name="age-start" id="age">
-                                                        <option value="1">0</option>
-                                                        <option value="2">1</option>
-                                                        <option value="3">2</option>
-                                                        <option value="4">3</option>
-                                                        <option value="5">4</option>
-                                                        <option value="6">5</option>
-                                                        <option value="7">6</option>
-                                                        <option value="8">above 6</option>
-                                                        
-                                                    </select>
-                                                </div>
-
-                                                
-                                            </div>
-
-                                        </div>
                                         <div class="city">
-                                            <label for="city" class="left">City</label>
-                                            <input class="right" type="text" id="city" placeholder="Your City Name..">
+                                            <div class="custom-select right w-100">
+                                                <select name="country" id="country" class="">
+                                                    <option  selected>Choose Your Country
+                                                    </option>
+                                                    <option value="Usa">Usa</option>
+                                                    <option value="Uk">Uk</option>
+                                                    <option value="Spain">Spain</option>
+                                                    <option value="Brazil">Brazil</option>
+                                                    <option value="France">France</option>
+                                                    <option value="Newzeland">Newzeland</option>
+                                                    <option value="Australia">Australia</option>
+                                                    <option value="Bangladesh">Bangladesh</option>
+                                                    <option value="Turki">Turki</option>
+                                                    <option value="Chine">Chine</option>
+                                                    <option value="India">India</option>
+                                                    <option value="Canada">Canada</option>
+                                                </select>
+                                            </div>
                                         </div>
-                                        <button class="">Find a Professional</button>
+                                        <button class="findclass" type="button">Find a Professional</button>
 
                                     </form>
                                     <!-- <ul class="social-list">
@@ -561,6 +621,41 @@
             
         }
         console.log(arr);
+        
+        var logot=document.querySelector("#logout");
+        logot.addEventListener("click",()=>{
+            localStorage.removeItem("name");
+            storagehandle();
+          
+            if(localStorage.admin){
+                localStorage.removeItem("admin")
+            }
+
+        })
+        
+        $(".findclass").click((e)=>{
+            e.preventDefault()
+        let form=document.forms["filter-form"]
+        let obj={}
+        if(form.gender.value!="Gender")
+            obj.gender=form.gender.value;
+        if(form.level.value!="Level")
+            obj.level="Level"+form.level.value;
+        if(form.companyType.value!="Company Type")
+            obj.companyType=form.companyType.value;
+        if(form.country.value!="Choose Your Country")
+            obj.country=form.country.value
+        
+            localStorage.searching=JSON.stringify(obj)
+            if(localStorage.name)
+                window.open("active-group.html","_self")
+            else window.open("login.html","_self")
+        })
+        
+        
+
+
+        
     </script>
 </body>
 

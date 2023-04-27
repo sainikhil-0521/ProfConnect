@@ -344,6 +344,19 @@
     <script src="assets/js/addblog.js"></script>
     <script src="https://rawgit.com/moment/moment/2.2.1/min/moment.min.js"></script>
     <script>
+       
+        var logot=document.querySelector("#logout");
+        logot.addEventListener("click",()=>{
+            localStorage.removeItem("name");
+            storagehandle();
+            
+            if(localStorage.admin){
+                localStorage.removeItem("admin")
+            }
+
+        })
+        window.onload=storagehandle
+        window.onfocus=storagehandle
         
     </script>
 </body>

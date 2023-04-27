@@ -228,21 +228,7 @@
                                 <li>
                                     <a href="#"><i class="icofont-rounded-double-left prevnext"></i></a>
                                 </li>
-                                <!-- <li>
-                                    <a href="#" class="paginate">1</a>
-                                </li>
-                                <li >
-                                    <a href="#" class="paginate">2</a>
-                                </li>
-                                <li>
-                                    <a href="#"class="paginate">3</a>
-                                </li> -->
-                                <!-- <li class="d-none d-sm-block">
-                                    <a href="#"class="paginate">4</a>
-                                </li>
-                                <li>
-                                    <a href="#" class="paginate">5</a>
-                                </li> -->
+                                
                                 <li>
                                     <a href="#"><i class="icofont-rounded-double-right prevnext"></i></a>
                                 </li>
@@ -381,6 +367,18 @@
     <script src="assets/js/allblogs.js"></script>
     <script src="https://rawgit.com/moment/moment/2.2.1/min/moment.min.js"></script>
     <script>
+       
+        var logot=document.querySelector("#logout");
+        logot.addEventListener("click",()=>{
+            localStorage.removeItem("name");
+            storagehandle();
+           
+            if(localStorage.admin){
+                localStorage.removeItem("admin")
+            }
+
+        })
+        
        
     </script>
 </body>

@@ -33,6 +33,7 @@ mongoose
 
   app.use("/users",require("./routes/user"))
   app.use("/match",require("./routes/match"))
+  app.use("/admin",require("./routes/admin"))
   
   app.get("/",(req,res)=>{
     console.log("server working");

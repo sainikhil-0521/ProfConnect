@@ -15,20 +15,26 @@ function storagehandle() {
         logot2.style.display = "inline-block";
 
       }
-    //   if (san) {
-    //     // san.innerText = "Profile";
-    //     // san.setAttribute("href", "/frontend/html/profile.html");
-    //     // san.setAttribute("target", "");
-    //     if(localStorage.admin){
-    //       san.innerText = "Admin";
-    //       san.setAttribute("href", "/frontend/html/admin.html");
-    //       san.setAttribute("target", "");
-    //     }
+      if (profile) {
+        
+        if(localStorage.admin){
+          profile.innerHTML = `<a href="admin.html">Admin</a>`
+          
+        }
+      }
         
       
     } else {
       if (logot2) {
         logot2.style.display = "none";
+        if (profile) {
+          profile.style.display="none"
+          if(localStorage.admin){
+            profile.innerHTML = `<a href="profile.html">Profile</a>`
+            
+          }
+        }
+       
         profile.style.display="none";
       }
     }

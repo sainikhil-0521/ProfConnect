@@ -360,10 +360,16 @@
     <script src="assets/js/functions.js"></script>
     <script src="assets/js/logoutHandler.js"></script>
     <script>
+      
         var logot=document.querySelector("#logout");
         logot.addEventListener("click",()=>{
             localStorage.removeItem("name");
             storagehandle();
+            
+            if(localStorage.admin){
+                localStorage.removeItem("admin")
+            }
+
         })
         window.onload=storagehandle
         window.onfocus=storagehandle

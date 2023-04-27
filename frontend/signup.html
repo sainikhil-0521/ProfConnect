@@ -15,6 +15,15 @@
     <link rel="stylesheet" href="assets/css/style.css">
 
     <title>ProfConnect</title>
+    <style>
+        .alert{
+            position: fixed;
+            top:26%;
+            right: 2%;
+            z-index: 20;
+            display: none;
+        }
+    </style>
 </head>
 
 <body>
@@ -27,12 +36,16 @@
             </div>
         </div>
     </div>
+    
     <!-- preloader ending here -->
 
     
 
 
     <!-- ==========Header Section Starts Here========== -->
+    <div class="alert alert-danger" role="alert">
+  This is a primary alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
+</div>
     <header class="header-section">
         <div class="header-top">
             <div class="container">
@@ -127,7 +140,7 @@
         </div>
     </header>
     <!-- ==========Header Section Ends Here========== -->
-
+   
     <!-- ==========Page Header Section Start Here========== -->
     <section class="page-header-section style-1 bg-pink">
         <div class="container">
@@ -304,10 +317,15 @@
     <script src="assets/js/functions.js"></script>
     <script src="assets/js/logoutHandler.js"></script>
     <script>
+       
         var logot=document.querySelector("#logout");
         logot.addEventListener("click",()=>{
             localStorage.removeItem("name");
             storagehandle();
+          
+            if(localStorage.admin){
+                localStorage.removeItem("admin")
+            }
         })
         window.onload=storagehandle
         window.onfocus=storagehandle

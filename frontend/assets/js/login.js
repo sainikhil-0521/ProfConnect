@@ -19,9 +19,10 @@ sub.addEventListener("click",(e)=>{
                 localStorage.setItem("name",resp.token);
                 localStorage.setItem("username",resp.username)
                 localStorage.setItem("times",0)
+                if(resp.admin) localStorage.admin=resp.admin
+
                 storagehandle();
-                 alert("user logged in")
-                // if(resp.admin) localStorage.admin=resp.admin
+                //  alert("user logged in")
                  
 
                  window.open("./index.html","_self");

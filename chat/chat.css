@@ -200,6 +200,11 @@ top: 30px;
 right: 15px;
 display: none;
 }
+
+.amenu{
+  display: "" !important;
+}
+
 .action_menu ul{
 list-style: none;
 padding: 0;

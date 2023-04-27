@@ -7,7 +7,7 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const { signup, addUserDetails, valid } = require("../controllers/user");
 const { addUser ,auth} = require("../middleware/user");
-const { matching,connecting,makingmatch } = require("../controllers/match");
+const { matching,connecting,makingmatch,searching } = require("../controllers/match");
 // const { profilePic } = require("../controllers/multer");
 
 const app = express();
@@ -22,6 +22,7 @@ const router=express.Router()
 router.get("/matched/:page",auth,matching);
 router.post("/connect",auth,connecting);
 router.post("/makeamatch",auth,makingmatch);
+router.post("/search",auth,searching);
 
 // router.post("/editData",editProfile);
 

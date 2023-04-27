@@ -1,13 +1,7 @@
 
 
 var socket = io("http://localhost:4050",{query:`uname=${localStorage.username}`});
-$(document).ready(function () {
-  $("#action_menu_btn").click(function () {
-    $(".action_menu").toggle();
 
-  });
-  
-});
 
 socket.on("initial_connection",(msg)=>{
   console.log(msg);
@@ -18,21 +12,23 @@ socket.on("initial_connection",(msg)=>{
         <div class="d-flex bd-highlight">
           <div class="img_cont">
             <img src=${element.image} class="rounded-circle user_img">
-            <span class="online_icon"></span>
+            <span class=${element.isOnline?"online_icon":""} id=${"info"+element.username}></span>
           </div>
-          <div class="user_info">
+          <div class="user_info" >
             <span>${element.username}</span>
             <span class="new_msg">${element.count?element.count:""}</span>
           </div>
         </div>
       </li>`;
 
+
+
       document.querySelector(".chatting").innerHTML+=`<div class="card cardd" id=${element.username+"div"}>
 						<div class="card-header msg_head">
 							<div class="d-flex bd-highlight">
 								<div class="img_cont">
 									<img src=${element.image} class="rounded-circle user_img">
-									<span class="online_icon"></span>
+									
 								</div>
 								<div class="user_info">
 									<span>${element.username}</span>
@@ -40,18 +36,16 @@ socket.on("initial_connection",(msg)=>{
 								</div>
 								<div class="video_cam">
 									<span><i class="fas fa-video"></i></span>
-									
+                  <span><i class="fas fa-trash"></i></span>
+                  
+
+                  
 								</div>
+                
 							</div>
-							<span id="action_menu_btn"><i class="fas fa-ellipsis-v"></i></span>
-							<div class="action_menu">
-								<ul>
-									<li><i class="fas fa-user-circle"></i> View profile</li>
-									<li><i class="fas fa-users"></i> Add to close friends</li>
-									<li><i class="fas fa-plus"></i> Add to group</li>
-									<li><i class="fas fa-ban"></i> Block</li>
-								</ul>
-							</div>
+              
+							
+							
 						</div>
             <div class="card-body msg_card_body"></div></div>`;
             element.messages.forEach(ele => {
@@ -79,6 +73,22 @@ socket.on("initial_connection",(msg)=>{
 								</div>
 							</div>
 					</div>`
+  });
+
+  socket.on("onlineornot",(member)=>{
+    console.log("member",member);
+    if(member.valid=="online")
+      $("#info"+member.username).addClass("online_icon")
+    else
+    $("#info"+member.username).removeClass("online_icon")
+  })
+
+  $(document).ready(function () {
+    $("#action_menu_btn").click(function () {
+      $(".action_menu").toggle();
+  
+    });
+    
   });
   
 
@@ -116,6 +126,10 @@ socket.on("initial_connection",(msg)=>{
 
   $(".fa-video").click((e)=>{
       window.open("http://127.0.0.1:3500?"+localStorage.username+"?"+$(".active")[0].id)
+  })
+  $(".fa-trash").click((e)=>{
+
+    location.reload()
   })
 
 })

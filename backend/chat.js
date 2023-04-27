@@ -52,6 +52,7 @@ mongoose
         let obj = {};
         obj.username = matchedp.matchedProfiles[i].username;
         obj.image = matchedp.matchedProfiles[i].profilePic;
+        obj.isOnline=matchedp.matchedProfiles[i].isOnline;
         
         let p1, p2;
         if(matchedp.username<matchedp.matchedProfiles[i].username){p1=matchedp.username;p2=matchedp.matchedProfiles[i].username}
@@ -66,7 +67,12 @@ mongoose
 
 
         msg.push(obj);
+        if(obj.isOnline){
+          io.to(name_id.get(obj.username)).emit("onlineornot",{username:uvalue,valid:"online"})
+        }
       }
+
+
 
       io.to(socket.id).emit("initial_connection", msg);
 
@@ -105,6 +111,18 @@ mongoose
           { username: id_name.get(socket.id) },
           { $set: { isOnline: false } }
         );
+        
+        let matchedp = await UserPC.findOne({ username: id_name.get(socket.id) }).populate("matchedProfiles")
+        // console.log(matchedp);
+      for (let i = 0; i < matchedp.matchedProfiles.length; i++) {
+       
+        if(matchedp.matchedProfiles[i].isOnline){
+          io.to(name_id.get(matchedp.matchedProfiles[i].username)).emit("onlineornot",{username:id_name.get(socket.id),valid:"offline"})
+        }
+      }
+
+
+
         name_id.delete(id_name.get(socket.id));
         id_name.delete(socket.id);
 

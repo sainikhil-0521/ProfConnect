@@ -35,6 +35,15 @@ sign.addEventListener("click",(e)=>{
                                 alert("enter right password!")
                             }
                         }
+                else{
+                    console.log(result);
+                        let set=result.split("?")
+                        $(".alert").html(set[1])
+                        $(".alert").css("display","inline-block") 
+                        setTimeout(()=>{
+                            $(".alert").css("display","none") 
+                        },3000)
+                }
 
                     
             }

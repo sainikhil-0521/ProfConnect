@@ -61,6 +61,15 @@ const UserPCSchema = {
     //  require:true,
     default: "free",
   },
+  subscriptionEnd:{
+    type:Date
+  },
+  todayConnections:{
+    type:{
+      date:Date,
+      count:Number
+    }
+  },
   matchedProfiles: {
     type: [
       {

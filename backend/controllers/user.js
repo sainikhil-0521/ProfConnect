@@ -83,8 +83,10 @@ async function signup(req, res) {
           async (err, token) => {
             if (err) {
               console.log("error", err);
-              res.send(err);
+              res.send("notok?error");
             } else {
+
+            try{
               let user = new UserPC({
                 username: username,
                 email: email,
@@ -101,16 +103,22 @@ async function signup(req, res) {
                 uname: det.username,
                 email: det.email,
               });
+
+            }
+            catch{
+              res.send("notok?Error with username or email");
+            }
+
             }
           }
         );
       } else {
-        res.send("notok");
+        res.send("notok?error with password");
       }
     });
   } else {
-    res.send({user:"Invalid pwd"})
-    // alert("password and confirm password is not same!");
+    
+    res.send("notok?password and confirm password not same");
   }
   
   
@@ -268,7 +276,7 @@ async function valid(req, res) {
             } else {
               console.log("jwt success", token);
               if (data.email == "adminprofconnect@gmail.com") {
-                res.send({ user: "admin", token: token, admin: "yesyes" });
+                res.send({ user: "admin", token: token, admin: "yesyes",username:"admin" });
               } else
                 res.send({ user: "valid pwd", username: uname, token: token });
             }
@@ -366,5 +374,38 @@ async function adminblogs(req,res){
 }
 
 
+async function userType(req,res){
+  let email=req.user.email;
+  let doc=await UserPC.findOne({email:email})
+  let result={}
+  result.type=doc.userType
+  if(doc.userType!="free"){
+    if(doc.subscriptionEnd>(new Date())){
+      result.ends=doc.subscriptionEnd;
+    }
+    else{
+      let docc=await UserPC.findOneAndUpdate({email:email},{$set:{userType:"free"}})
+      result.type="free"
+    }
+      
+  }
+  console.log(new Date());
+  res.send(result)
+}
 
-module.exports={signup,addUserDetails,valid,profile,blogAdd,blogs,allblogs,adminblogs}
+async function userTypeChange(req,res){
+
+  let email=req.user.email
+  console.log(req.body.type);
+  let d=new Date()
+  if(req.body.type=="silver")
+    d.setUTCDate(31+d.getUTCDate())
+  else
+    d.setUTCDate(365+d.getUTCDate())
+  await UserPC.updateOne({email:email},{$set:{userType:req.body.type,subscriptionEnd:d}})
+
+  res.send("coolthen")
+}
+
+
+module.exports={signup,addUserDetails,valid,profile,blogAdd,blogs,allblogs,adminblogs,userType,userTypeChange}

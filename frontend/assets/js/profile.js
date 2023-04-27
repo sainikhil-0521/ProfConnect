@@ -3,6 +3,7 @@ ele.addEventListener("click",()=>{
     window.open("./addUserDetails.html","_self");
 })
 function fill(){
+    console.log("ohfill");
         storagehandle();
          var logot=document.querySelector("#logout");
         logot.addEventListener("click",()=>{
@@ -15,7 +16,7 @@ function fill(){
             type: "POST",
             url: "http://127.0.0.1:4000/users/profile",
             contentType: 'application/json',
-            headers: {
+            headers: { 
                 periperi:localStorage.getItem("name")
             },
             success: function (result) {
