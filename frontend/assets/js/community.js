@@ -7,7 +7,7 @@ var searchbool=false
 
 $(".group-count").click((e) => {
   e.preventDefault()
-  window.open("../chat/chat.html", "_self");
+  window.open("chat/chat.html", "_self");
 });
 
 $(".atlassearch").click((e)=>{
