@@ -5,7 +5,7 @@ require("dotenv").config();
 const cors = require("cors");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
-const { signup, addUserDetails, valid, profile, blogAdd, blogs, allblogs, adminblogs,userType ,userTypeChange} = require("../controllers/user");
+const { signup, addUserDetails, valid, profile, blogAdd, blogs, allblogs, adminblogs,userType ,userTypeChange,searchuser} = require("../controllers/user");
 const { addUser ,auth, addblog} = require("../middleware/user");
 // const { profilePic } = require("../controllers/multer");
 const app = express();
@@ -28,6 +28,8 @@ router.post("/allblogs",auth,allblogs);
 router.post("/userType",auth,userType);
 router.post("/userTypeChange",auth,userTypeChange);
 router.post("/adminblogs",auth,adminblogs);
+router.get("/searchuser/:val",auth,searchuser);
+
 // router.post("/editData",editProfile);
 
 module.exports =router;

@@ -118,7 +118,7 @@ async function signup(req, res) {
     });
   } else {
     
-    res.send("notok?password and confirm password not same");
+    res.send({user:"Invalid pwd"});
   }
   
   
@@ -400,5 +400,35 @@ async function userTypeChange(req,res){
   res.send("coolthen")
 }
 
+async function searchuser(req,res){
 
-module.exports={signup,addUserDetails,valid,profile,blogAdd,blogs,allblogs,adminblogs,userType,userTypeChange}
+    let person=await UserPC.findOne({email:req.user.email})
+    let obj=await UserPC.aggregate([
+      {
+        $search: {
+          index: "username",
+          autocomplete: {
+            query: req.params.val,
+            path:"username"
+          }
+        }
+      },{
+        $match:{
+          $and: [
+            { _id: { $ne:  person._id } },
+            { _id: { $nin: person.blockedProfiles } },
+            { _id: { $nin: person.matchedProfiles } },
+            { _id: { $nin: person.requested } },
+            { _id: { $nin: person.following } },
+            
+          ],
+        }
+      }
+    ])
+
+    res.send(obj)
+
+}
+
+
+module.exports={searchuser,signup,addUserDetails,valid,profile,blogAdd,blogs,allblogs,adminblogs,userType,userTypeChange}

@@ -106,6 +106,23 @@ mongoose
 
       });
 
+
+      socket.on("blockUser",async (from,to)=>{
+          console.log(from,to);
+          let p1, p2;
+        if(from<to){p1=from;p2=to}
+        else{ p1=to;p2=from}
+
+        let obj = await MatchPC.findOneAndDelete({ profile1: p1, profile2: p2 });
+        await ChatPC.deleteOne({_id:obj.chatId})
+        let id1=await UserPC.findOne({username:p1})
+        let id2=await UserPC.findOne({username:p2})
+
+        await UserPC.findOneAndUpdate({_id:id1._id},{$pull:{matchedProfiles:id2._id},$push:{blockedProfiles:id2._id}})
+        await UserPC.findOneAndUpdate({_id:id2._id},{$pull:{matchedProfiles:id1._id},$push:{blockedProfiles:id1._id}})
+
+      })
+
       socket.on("disconnect", async () => {
         await UserPC.updateOne(
           { username: id_name.get(socket.id) },
