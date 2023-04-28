@@ -12,7 +12,7 @@ socket.on("initial_connection",(msg)=>{
         <div class="d-flex bd-highlight">
           <div class="img_cont">
             <img src=${element.image} class="rounded-circle user_img">
-            <span class=${element.isOnline?"online_icon":""} id=${"info"+element.username}></span>
+            <span ${element.isOnline?"class='online_icon'":""} id=${"info"+element.username}></span>
           </div>
           <div class="user_info" >
             <span>${element.username}</span>
@@ -128,7 +128,8 @@ socket.on("initial_connection",(msg)=>{
       window.open("http://127.0.0.1:3500?"+localStorage.username+"?"+$(".active")[0].id)
   })
   $(".fa-trash").click((e)=>{
-
+    console.log("clicked");
+    socket.emit("blockUser",localStorage.username,$(".active")[0].id)
     location.reload()
   })
 

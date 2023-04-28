@@ -10,6 +10,49 @@ $(".group-count").click((e) => {
   window.open("../chat/chat.html", "_self");
 });
 
+$(".atlassearch").click((e)=>{
+  console.log("clicked",$(".atlassearchvalue").val());
+  
+  $.ajax({
+    type: "GET",
+    url: "http://127.0.0.1:4000/users/searchuser/"+$(".atlassearchvalue").val(),
+    headers: {
+      periperi: localStorage.name,
+    },
+    success: function (resp) {
+      console.log(resp);
+      document.querySelector(".row.g-4").innerHTML = "";
+        resp.forEach((ele) => {
+          document.querySelector(".row.g-4").innerHTML += `
+          <div class="col-lg-6">
+          <div class="group-item lab-item style-1">
+              <div class="lab-inner d-flex flex-wrap align-items-center p-4">
+                  <div class="lab-thumb me-md-4 mb-4 mb-md-0">
+                      <img src=${ele.profilePic} alt="img">
+                  </div>
+                  <div class="lab-content">
+                      <h4>${ele.username}</h4>
+                      <p id=${ele.username} >see profile</p>
+                      <div id="popup1" class=${"zz"+ele.username}>
+                          <div class="popup">
+                              <h2>Profile</h2>
+                              <a class="close" id=${"z"+ele.username}>&times;</a>
+                              <div class="content">
+                              
+                              
+                          </div>
+                      </div>
+                     
+                      <div class="test"> <a href="#" class="lab-btn" id=${ele._id}>Connect</a></div>
+                  </div>
+              </div>
+          </div>
+      </div>`;
+        });
+    }
+  })
+
+})
 
 
 $(".searchbtn").click((e) => {
@@ -64,7 +107,13 @@ $(".searchbtn").click((e) => {
                               <h2>Profile</h2>
                               <a class="close" id=${"z"+ele.docs[0].username}>&times;</a>
                               <div class="content">
-                                  ${ele.docs[0].username}
+                              
+                                 <div><spam class="headersProfile">Name</spam>: ${ele.docs[0].username}</div>
+                                 <div><spam class="headersProfile">Company</spam>: ${ele.docs[0].companyType}</div>
+                                 <div><spam class="headersProfile">Experience</spam>: ${ele.docs[0].yearsOfExperience}</div>
+                                 <div><spam class="headersProfile">ROle</spam>: ${ele.docs[0].role}</div>
+                                 <div><spam class="headersProfile">Intrests</spam>: ${ele.docs[0].intrests}</div>
+                                 <div><spam class="headersProfile">Country</spam>: ${ele.docs[0].country}</div>
                               </div>
                           </div>
                       </div>
@@ -151,7 +200,13 @@ function fill() {
                               <h2>Profile</h2>
                               <a class="close" id=${"z"+ele.docs[0].username}>&times;</a>
                               <div class="content">
-                                  ${ele.docs[0].username}
+                              
+                                 <div><spam class="headersProfile">Name</spam>: ${ele.docs[0].username}</div>
+                                 <div><spam class="headersProfile">Company</spam>: ${ele.docs[0].company}</div>
+                                 <div><spam class="headersProfile">Experience</spam>: ${ele.docs[0].yearsOfExperience}</div>
+                                 <div><spam class="headersProfile">ROle</spam>: ${ele.docs[0].role}</div>
+                                 <div><spam class="headersProfile">Intrests</spam>: ${ele.docs[0].interests}</div>
+                                 <div><spam class="headersProfile">Country</spam>: ${ele.docs[0].country}</div>
                               </div>
                           </div>
                       </div>

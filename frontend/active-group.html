@@ -80,6 +80,13 @@
         .searchbtn:active{
             background-color: #df0a2d;
         }
+
+        .headersProfile{
+            color: #df0a2d;
+            font-size: 1.2rem;
+            margin-right: 2%;
+            
+        }
     </style>
 </head>
 
@@ -411,11 +418,11 @@
                     <p>video /</p>
                     <p>Chat</p>
                 </li>
-                <li class="group-search-btn">
-                    <form action="/">
-                        <input type="text" placeholder="Search Group Name...">
+                <li class="group-search-btn" id="searchch">
+                    <form action="#searchch">
+                        <input type="text" placeholder="Search Group Name..." class="atlassearchvalue">
                         <div class="input-button">
-                            <input type="submit" value="Search Now">
+                            <input type="button" value="Search Now"  class="atlassearch" style="background-color: #df0a2d;color: white;">
                         </div>
                     </form>
 
