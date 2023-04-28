@@ -19,7 +19,7 @@ const router=express.Router()
 
 
 
-router.get("/matched",auth,matching);
+router.get("/matched/:page",auth,matching);
 router.post("/connect",auth,connecting);
 router.post("/makeamatch",auth,makingmatch);
 router.post("/search",auth,searching);

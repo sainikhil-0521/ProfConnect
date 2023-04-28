@@ -23,9 +23,8 @@ app.use(express.urlencoded({ extended: true }));
 //     console.log("DB Connection sucessful");
     
 //   })
-  app.use("/users",require("./routes/user"))
+app.use("/users",require("./routes/user"))
   app.use("/match",require("./routes/match"))
-  app.use("/admin",require("./routes/admin"))
   
   app.get("/",(req,res)=>{
     console.log("server working");

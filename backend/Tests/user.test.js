@@ -10,6 +10,7 @@ app.use("/users",user);
 
 
 
+
 describe('basic setup of database ', () => {
   /* Connecting to the database before each test. */
       beforeAll(async () => {
@@ -17,7 +18,7 @@ describe('basic setup of database ', () => {
       });
 
       describe("checking if user valid given a username and password", () => {
-       
+        
         it("valid email and pwd ", async () => {
             const e="rama@gmail.com";
             const p="rama123"
@@ -26,7 +27,7 @@ describe('basic setup of database ', () => {
               password: p
             })
             //console.log(response)
-           
+            
           expect(response.body.user).toEqual("valid pwd");
           expect(response.statusCode).toEqual(200)
           })
@@ -38,7 +39,7 @@ describe('basic setup of database ', () => {
               password: p
             })
             //console.log(response)
-           
+            
             expect(response.body.user).toEqual("admin");
           expect(response.statusCode).toEqual(200)
           })
@@ -50,10 +51,10 @@ describe('basic setup of database ', () => {
             })
           expect(response.body.user).toEqual("Invalid pwd");
             expect(response.token).toBeUndefined();;
-           
+            
           })
-       
-         
+        
+          
 
       })
       describe('signup of a user', () => {
@@ -70,15 +71,15 @@ describe('basic setup of database ', () => {
         it('if  userdetails are valid', async() => {
             const response = await request.post("/users/signup").send({
                 email: "rama2@gmail.com",
-                username:"ramakrishna2",
-                password: "rama1234",
-                cpassword:"rama1234"
+                username:"rama2",
+                password: "password",
+                cpassword:"password"
               })
             expect(response.body.user).toEqual("valid");
             expect(response.statusCode).toEqual(200)
         });
 
-       
+        
       });
       // describe('xyz', () => {
       //   it('abc', async() => {
@@ -90,12 +91,23 @@ describe('basic setup of database ', () => {
       //     })
       //   expect(response.body.user).toEqual("valid");
       //   expect(response.statusCode).toEqual(200)
-   
+    
       //   });
-       
+        
       // });
-      afterAll(async () => {
-        await mongoose.connection.close();
-      })
-     
-    })
+      
+
+
+
+
+//   /* Closing database connection after each test. */
+afterAll(async () => {
+  await mongoose.connection.close();
+})
+
+
+});
+
+
+
+

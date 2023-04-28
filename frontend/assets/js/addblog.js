@@ -22,6 +22,7 @@ function fill(){
                 if ("valid"== result.user) {
                     console.log(result.user,"obj",result.obj);
                     var arr=result.obj;
+                  if(arr.length){
                     var blog=document.getElementById("blogs");
                     blog.innerHTML="";
                     arr.forEach((ele) => {
@@ -47,7 +48,7 @@ function fill(){
                     
                 
                 }
-
+            }
                         
             }
         })

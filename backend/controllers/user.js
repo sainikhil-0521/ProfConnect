@@ -342,10 +342,17 @@ async function blogs(req,res){
 async function allblogs(req,res){
   try {
     console.log("all blogs loading");
-  let email=req.user.email;
-    var blogarr=await BlogPC.find({});
-    console.log("blog array",blogarr);
-    res.send({obj:blogarr,user:"valid"});
+  // let email=req.user.email;
+  let limits=2;
+  let p=req.body.page;
+  // let page=1;
+  let count=await BlogPC.estimatedDocumentCount();
+  let no=Math.ceil(count/limits);
+  
+  
+    let blogarr=await BlogPC.find().skip((p-1)*limits).limit(limits);
+    console.log("blog array",blogarr.length);
+    res.send({obj:blogarr,no:no,user:"valid"});
   } catch (error) {
     console.log(error);
   }
