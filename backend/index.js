@@ -115,7 +115,7 @@ app.get('/google/callback', passport.authenticate('google', { failureRedirect: '
         else{
           token2=token;
           console.log(token2);
-          res.redirect(`https://candid-kitsune-5a8958.netlify.app?${token2}?${isfirst}?${emp.username}?${emp.email}`);
+          res.redirect(`https://profconnect.netlify.app?${token2}?${isfirst}?${emp.username}?${emp.email}`);
         }
       }
     )
