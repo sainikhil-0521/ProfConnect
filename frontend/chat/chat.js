@@ -1,6 +1,6 @@
 
 
-var socket = io("http://localhost:4050",{query:`uname=${localStorage.username}`});
+var socket = io("https://prof-connect-chat.onrender.com",{query:`uname=${localStorage.username}`});
 
 
 socket.on("initial_connection",(msg)=>{
@@ -125,7 +125,7 @@ socket.on("initial_connection",(msg)=>{
   })
 
   $(".fa-video").click((e)=>{
-      window.open("http://127.0.0.1:3500?"+localStorage.username+"?"+$(".active")[0].id)
+      window.open("https://prof-connect-video.onrender.com?"+localStorage.username+"?"+$(".active")[0].id)
   })
   $(".fa-trash").click((e)=>{
     console.log("clicked");

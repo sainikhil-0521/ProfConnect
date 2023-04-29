@@ -173,7 +173,7 @@ logot2.addEventListener("click",(e)=>{
 
 $.ajax({
   type: "POST",
-  url: "http://127.0.0.1:4000/admin/dataDisplay",
+  url: "https://prof-connect-index.onrender.com/admin/dataDisplay",
   contentType: "application/json",
   dataType: "json",
   success: function (resp) {

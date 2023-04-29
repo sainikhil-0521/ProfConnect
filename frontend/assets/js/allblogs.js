@@ -8,7 +8,7 @@
         console.log("all blogs js ");
         $.ajax({
             type: "POST",
-            url: "http://127.0.0.1:4000/users/allblogs",
+            url: "https://prof-connect-index.onrender.com/users/allblogs",
             contentType: 'application/json',
             headers: {
                 periperi:localStorage.getItem("name")
@@ -66,7 +66,7 @@ $(".prevnext").on("click",(e)=>{
    
         $.ajax({
             type: "POST",
-            url: "http://127.0.0.1:4000/users/allblogs",
+            url: "https://prof-connect-index.onrender.com/users/allblogs",
             contentType: 'application/json',
             headers: {
                 periperi:localStorage.getItem("name")

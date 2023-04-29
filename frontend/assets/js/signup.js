@@ -5,7 +5,7 @@ sign.addEventListener("click",(e)=>{
     console.log("signup clicked");
     $.ajax({
         type: "POST",
-        url: "http://127.0.0.1:4000/users/signup",
+        url: "https://prof-connect-index.onrender.com/users/signup",
         contentType: 'application/json',
         data: JSON.stringify({
             username:signupform.username.value,

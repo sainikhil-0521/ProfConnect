@@ -6,7 +6,7 @@ sub.addEventListener("click",(e)=>{
     console.log("email pwd",email,pwd);
     $.ajax({
         type: "POST",
-        url: "http://127.0.0.1:4000/users/valid",
+        url: "https://prof-connect-index.onrender.com/users/valid",
         contentType: 'application/json',
         data: JSON.stringify({
             email:email,

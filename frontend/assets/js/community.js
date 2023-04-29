@@ -15,7 +15,7 @@ $(".atlassearch").click((e)=>{
   
   $.ajax({
     type: "GET",
-    url: "http://127.0.0.1:4000/users/searchuser/"+$(".atlassearchvalue").val(),
+    url: "https://prof-connect-index.onrender.com/users/searchuser/"+$(".atlassearchvalue").val(),
     headers: {
       periperi: localStorage.name,
     },
@@ -79,7 +79,7 @@ $(".searchbtn").click((e) => {
   console.log(obj); 
   $.ajax({
     type: "POST",
-    url: "http://127.0.0.1:4000/match/search",
+    url: "https://prof-connect-index.onrender.com/match/search",
     contentType: "application/json",
     headers: {
       periperi: localStorage.name,
@@ -146,7 +146,7 @@ function fill() {
   storagehandle();
   $.ajax({
     type: "GET",
-    url: "http://127.0.0.1:4000/match/matched/1",
+    url: "https://prof-connect-index.onrender.com/match/matched/1",
     headers: {
       periperi: localStorage.name,
     },
@@ -243,7 +243,7 @@ function fill() {
           console.log(e.target.id);
           $.ajax({
             type: "POST",
-            url: "http://127.0.0.1:4000/match/connect",
+            url: "https://prof-connect-index.onrender.com/match/connect",
             headers: {
               periperi: localStorage.name,
             },
@@ -268,7 +268,7 @@ function fill() {
           console.log(e.target.id);
           $.ajax({
             type: "POST",
-            url: "http://127.0.0.1:4000/match/makeamatch",
+            url: "https://prof-connect-index.onrender.com/match/makeamatch",
             headers: {
               periperi: localStorage.name,
             },
@@ -315,7 +315,7 @@ $(".prenxt").on("click",(e)=>{
    console.log("pagecount",pageCount);
       $.ajax({
           type: "GET",
-          url: "http://127.0.0.1:4000/match/matched/"+page,
+          url: "https://prof-connect-index.onrender.com/match/matched/"+page,
           contentType: 'application/json',
           headers: {
               periperi:localStorage.getItem("name")
@@ -383,7 +383,7 @@ $(".prenxt").on("click",(e)=>{
                console.log(e.target.id);
                 $.ajax({
                   type: "POST",
-                  url: "http://127.0.0.1:4000/match/connect",
+                  url: "https://prof-connect-index.onrender.com/match/connect",
                   headers: {
                     periperi: localStorage.name,
                   },
@@ -406,7 +406,7 @@ $(".prenxt").on("click",(e)=>{
              console.log(e.target.id);
               $.ajax({
                 type: "POST",
-                url: "http://127.0.0.1:4000/match/makeamatch",
+                url: "https://prof-connect-index.onrender.com/match/makeamatch",
                 headers: {
                   periperi: localStorage.name,
                 },

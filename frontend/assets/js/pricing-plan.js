@@ -1,6 +1,6 @@
 $.ajax({
     type: "POST",
-    url: "http://127.0.0.1:4000/users/userType",
+    url: "https://prof-connect-index.onrender.com/users/userType",
     headers: {
       periperi: localStorage.name,
     },
@@ -30,7 +30,7 @@ $(".purchase-btn").click((e)=>{
     let type=($(e.target).hasClass("silverbtn")?"silver":"gold")
     $.ajax({
         type: "POST",
-        url: "http://127.0.0.1:4000/users/userTypeChange",
+        url: "https://prof-connect-index.onrender.com/users/userTypeChange",
         headers: {
           periperi: localStorage.name,
         },

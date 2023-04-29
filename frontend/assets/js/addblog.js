@@ -11,7 +11,7 @@ function fill(){
         
         $.ajax({
             type: "POST",
-            url: "http://127.0.0.1:4000/users/blogs",
+            url: "https://prof-connect-index.onrender.com/users/blogs",
             contentType: 'application/json',
             headers: {
                 periperi:localStorage.getItem("name")
